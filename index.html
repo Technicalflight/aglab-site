@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>aglab — 跑在你桌面上的 AI 编程助手</title>
+<meta name="description" content="aglab 是一个 Windows 桌面端 AI 编程助手：接入你自己的模型服务商，在工作目录里安全地读代码、跑命令、改文件；支持生图/视频/音乐与多模态识别。开源（AGPL-3.0）。" />
+<link rel="icon" type="image/png" href="assets/icon.png" />
+<style>
+  /* ========== 设计令牌（浅色为主，自动适配深色；蓝紫渐变点缀，Kimi 平台式干净留白） ========== */
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f8fafc;
+    --card: #ffffff;
+    --text: #0f172a;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --brand: #3b82f6;
+    --brand-2: #8b5cf6;
+    --brand-ink: #1d4ed8;
+    --shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 8px 24px rgba(15, 23, 42, .06);
+    --shadow-lg: 0 2px 4px rgba(15, 23, 42, .05), 0 16px 48px rgba(15, 23, 42, .10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #0e1526;
+      --card: #111a2e;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --brand-ink: #93c5fd;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+      --shadow-lg: 0 2px 4px rgba(0, 0, 0, .35), 0 16px 48px rgba(0, 0, 0, .4);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ========== 导航 ========== */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-in { display: flex; align-items: center; gap: 28px; height: 60px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -.01em; }
+  .logo img { width: 28px; height: 28px; border-radius: 8px; }
+  .nav-links { display: flex; gap: 4px; margin-left: auto; }
+  .nav-links a {
+    padding: 7px 14px; border-radius: 999px; font-size: 14px; color: var(--muted);
+    transition: color .15s, background .15s;
+  }
+  .nav-links a:hover { color: var(--text); background: var(--bg-soft); }
+  .nav-gh {
+    display: flex; align-items: center; gap: 7px;
+    padding: 7px 16px; border-radius: 999px; font-size: 14px; font-weight: 600;
+    border: 1px solid var(--border); transition: border-color .15s, transform .15s;
+  }
+  .nav-gh:hover { border-color: var(--brand); transform: translateY(-1px); }
+  .nav-gh svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* ========== Hero ========== */
+  .hero { position: relative; text-align: center; padding: 96px 0 72px; overflow: visible; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .18; pointer-events: none; z-index: -1; }
+  .blob-1 { width: 460px; height: 460px; background: var(--brand); top: -120px; left: 8%; }
+  .blob-2 { width: 380px; height: 380px; background: var(--brand-2); top: -40px; right: 6%; }
+  @media (prefers-color-scheme: dark) { .blob { opacity: .16; } }
+  .hero-icon {
+    width: 96px; height: 96px; border-radius: 24px; box-shadow: var(--shadow-lg);
+    animation: rise .7s ease both;
+  }
+  .hero h1 {
+    margin-top: 28px; font-size: clamp(40px, 7vw, 64px); font-weight: 800;
+    letter-spacing: -.03em; line-height: 1.1; animation: rise .7s .08s ease both;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(100deg, var(--brand), var(--brand-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .sub {
+    margin: 18px auto 0; max-width: 620px; font-size: 18px; color: var(--muted);
+    animation: rise .7s .16s ease both;
+  }
+  .cta { margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: rise .7s .24s ease both; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 13px 26px; border-radius: 14px; font-size: 15px; font-weight: 600;
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary {
+    color: #fff; background: linear-gradient(100deg, var(--brand), var(--brand-2));
+    box-shadow: 0 8px 24px rgba(59, 130, 246, .35);
+  }
+  .btn-primary:hover { box-shadow: 0 12px 32px rgba(59, 130, 246, .45); }
+  .btn-ghost { border: 1px solid var(--border); background: var(--card); }
+  .btn-ghost:hover { border-color: var(--brand); }
+  .btn svg { width: 17px; height: 17px; fill: currentColor; }
+  .meta {
+    margin-top: 26px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+    font-size: 13px; color: var(--muted); animation: rise .7s .32s ease both;
+  }
+  .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); opacity: .6; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+  /* ========== 通用分区 ========== */
+  section { padding: 72px 0; }
+  .sec-head { text-align: center; margin-bottom: 48px; }
+  .sec-head .kicker {
+    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .12em;
+    color: var(--brand-ink); text-transform: uppercase; margin-bottom: 12px;
+  }
+  .sec-head h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -.02em; }
+  .sec-head p { margin-top: 12px; color: var(--muted); font-size: 15px; }
+
+  /* ========== 能力会话（四渐变瓦片） ========== */
+  .sessions { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .session {
+    border-radius: 20px; padding: 26px 22px; color: #fff; position: relative; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s;
+  }
+  .session:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .session .em { font-size: 30px; }
+  .session h3 { margin-top: 12px; font-size: 17px; font-weight: 700; }
+  .session p { margin-top: 6px; font-size: 13px; opacity: .88; line-height: 1.55; }
+  .s-chat  { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+  .s-image { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+  .s-video { background: linear-gradient(135deg, #ec4899, #db2777); }
+  .s-music { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+  /* ========== 功能卡片 ========== */
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+    padding: 24px; box-shadow: var(--shadow); transition: transform .18s, border-color .18s;
+  }
+  .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--brand) 45%, var(--border)); }
+  .card .em {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border-radius: 12px; font-size: 22px;
+    background: color-mix(in srgb, var(--brand) 10%, var(--bg-soft));
+  }
+  .card h3 { margin-top: 14px; font-size: 16px; font-weight: 700; }
+  .card p { margin-top: 7px; font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  /* ========== 开源 / 赞助 ========== */
+  .panel {
+    max-width: 720px; margin: 0 auto; text-align: center;
+    background: var(--card); border: 1px solid var(--border); border-radius: 24px;
+    padding: 44px 32px; box-shadow: var(--shadow);
+  }
+  .panel h3 { font-size: 20px; font-weight: 800; }
+  .panel p { margin-top: 10px; color: var(--muted); font-size: 14px; }
+  .panel .row { margin-top: 22px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .qrs { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+  .qr {
+    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+    padding: 14px; box-shadow: var(--shadow);
+  }
+  .qr img { width: 200px; height: 200px; display: block; border-radius: 10px; }
+  .qr figcaption { margin-top: 10px; font-size: 12px; color: var(--muted); }
+  .sponsor-note { max-width: 620px; margin: 22px auto 0; font-size: 12px; color: var(--muted); text-align: center; }
+
+  footer { border-top: 1px solid var(--border); padding: 34px 0 44px; margin-top: 40px; }
+  .foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); }
+  .foot a:hover { color: var(--text); }
+  .foot .links { display: flex; gap: 18px; }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hero { padding: 64px 0 48px; }
+    section { padding: 52px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#"><img src="assets/icon.png" alt="aglab 图标" />aglab</a>
+    <div class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#sessions">能力会话</a>
+      <a href="#opensource">开源</a>
+      <a href="#sponsor">赞助</a>
+    </div>
+    <a class="nav-gh" href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="wrap">
+    <img class="hero-icon" src="assets/icon.png" alt="aglab 应用图标" />
+    <h1>aglab<span class="grad">·你的桌面 AI 工作台</span></h1>
+    <p class="sub">
+      接入你自己的模型服务商，让 AI 在指定工作目录里安全地读代码、跑命令、改文件——
+      写代码之外，还能生图、生视频、做音乐。
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 3v10.586l-3.293-3.293-1.414 1.414L12 16.414l4.707-4.707-1.414-1.414L13 13.586V3h-2Z"/><path d="M5 19v2h14v-2H5Z"/></svg>
+        下载 Windows 安装包
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        查看源码
+      </a>
+    </div>
+    <div class="meta">
+      <span>Windows 10 / 11</span><span class="dot"></span>
+      <span>AGPL-3.0 开源</span><span class="dot"></span>
+      <span>自带模型接入</span><span class="dot"></span>
+      <span>本地存档</span>
+    </div>
+  </div>
+</header>
+
+<section id="sessions">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Capability Sessions</span>
+      <h2>四类能力会话，各干各的活</h2>
+      <p>聊天是聊天，生成是生成——不同任务各有独立界面与存档，互不打架</p>
+    </div>
+    <div class="sessions">
+      <div class="session s-chat"><span class="em">💬</span><h3>对话</h3><p>多服务商档案与模型池路由，分支树、全文搜索、自动压缩，缓存保温省钱</p></div>
+      <div class="session s-image"><span class="em">🖼️</span><h3>生图</h3><p>图生图与参数面板，参考图直接喂给模型，多张产出一次到位</p></div>
+      <div class="session s-video"><span class="em">🎬</span><h3>视频</h3><p>文本/图像/视频转视频三模式，首尾帧精确控制，比例时长分辨率随调</p></div>
+      <div class="session s-music"><span class="em">🎵</span><h3>音乐</h3><p>多家族 API 自动探测，描述或歌词直出成曲，就地试听</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="padding-top: 24px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Features</span>
+      <h2>工具能干活，也要守规矩</h2>
+      <p>每一步执行都有规则、审批与审计兜底——能力越强，收容越紧</p>
+    </div>
+    <div class="features">
+      <div class="card"><span class="em">🧰</span><h3>工具系统</h3><p>读写、命令、网络检索等内置工具；模型在你的工作目录里真正动手干活</p></div>
+      <div class="card"><span class="em">🛡️</span><h3>逐调用沙箱</h3><p>命令在低完整性沙箱与 Job Object 收容下执行，规则库 + 审批（单次放行 / 总是允许）说了算</p></div>
+      <div class="card"><span class="em">📜</span><h3>审计中心</h3><p>敏感信息自动打码，删除进回收站并有自动备份兜底，出了事能回溯</p></div>
+      <div class="card"><span class="em">👁️</span><h3>多模态识别</h3><p>图片、视频、音频本体随行发给支持的模型——看图听音，按能力逐个放行</p></div>
+      <div class="card"><span class="em">🤖</span><h3>MCP 扩展</h3><p>stdio / HTTP 服务器即插即用，支持 OAuth 接入，工具总开关一键收放</p></div>
+      <div class="card"><span class="em">🎯</span><h3>目标模式</h3><p>给一个目标，模型带着判据清单自主推进、自我修复，直到验收通过</p></div>
+      <div class="card"><span class="em">⏰</span><h3>定时任务</h3><p>每周计划与 cron 表达式触发后台任务，跑完系统通知，结果进会话</p></div>
+      <div class="card"><span class="em">🧠</span><h3>记忆与知识库</h3><p>长对话自动压缩，关键结论蒸馏进记忆；本地知识库随问随检索</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="opensource">
+  <div class="wrap">
+    <div class="panel">
+      <h3>开源 · AGPL-3.0</h3>
+      <p>aglab 基于 AGPL-3.0 协议开源，源码就在 GitHub。<br />自由使用、学习、修改与分发；商业用途需事先获得作者书面授权。</p>
+      <div class="row">
+        <a class="btn btn-primary" href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">GitHub 仓库</a>
+        <a class="btn btn-ghost" href="https://github.com/Technicalflight/aglab/blob/main/LICENSE" target="_blank" rel="noopener">查看许可证</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sponsor" style="padding-top: 24px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Sponsor</span>
+      <h2>请作者喝一杯</h2>
+      <p>如果 aglab 对你有帮助，欢迎请作者喝杯咖啡或可乐 ☕🥤</p>
+    </div>
+    <div class="qrs">
+      <figure class="qr"><img src="assets/alipay_qr.png" alt="支付宝收款码" /><figcaption>支付宝 Alipay</figcaption></figure>
+      <figure class="qr"><img src="assets/wechat_qr.png" alt="微信收款码" /><figcaption>微信 WeChat Pay</figcaption></figure>
+    </div>
+    <p class="sponsor-note">
+      赞助是完全自愿的感谢行为，不会提高或加快任何功能与修复的优先级——是否赞助、赞助多少与开发完全无关。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Technicalflight · aglab</span>
+    <div class="links">
+      <a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
+      <a href="https://linux.do" target="_blank" rel="noopener">Linux.Do</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
