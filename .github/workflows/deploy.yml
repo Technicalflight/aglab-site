@@ -1,0 +1,35 @@
+name: Deploy to GitHub Pages
+
+# Pages 的 legacy 分支构建在这个仓库上间歇性报错（Page build failed），
+# 改走 Actions 部署：直接把仓库根目录作为站点产物上传部署，确定性强、秒级完成
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
