@@ -6,221 +6,7 @@
 <title>aglab — 跑在你桌面上的 AI 编程助手</title>
 <meta name="description" content="aglab 是一个 Windows 桌面端 AI 编程助手：接入你自己的模型服务商，在工作目录里安全地读代码、跑命令、改文件；支持生图/视频/音乐与多模态识别。开源（AGPL-3.0）。" />
 <link rel="icon" type="image/png" href="assets/icon.png" />
-<style>
-  /* ========== 令牌：深色开发者风（对齐 platform.kimi.com 的黑底白字 + 透视产品视觉） ========== */
-  :root {
-    --bg: #050505;
-    --panel: #0d0d0d;
-    --panel-2: #111111;
-    --border: #222222;
-    --border-hi: #333333;
-    --text: #f5f5f5;
-    --muted: #9b9b9b;
-    --dim: #6b6b6b;
-    --ok: #22c55e;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
-
-  /* ========== 顶部公告条 ========== */
-  .announce {
-    text-align: center; font-size: 13px; padding: 9px 16px;
-    background: #0a0a0a; border-bottom: 1px solid #161616; color: #c9c9c9;
-  }
-  .announce a { text-decoration: underline; text-underline-offset: 3px; color: #fff; }
-  .announce a:hover { color: var(--dim); }
-
-  /* ========== 导航 ========== */
-  nav {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(5, 5, 5, .82);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid #161616;
-  }
-  .nav-in { display: flex; align-items: center; height: 64px; gap: 40px; }
-  .logo { font-weight: 800; font-size: 19px; letter-spacing: .02em; white-space: nowrap; }
-  .logo .bracket { font-weight: 300; color: #d4d4d4; }
-  .nav-links { display: flex; gap: 36px; margin-left: auto; font-size: 15px; color: #d4d4d4; }
-  .nav-links a { transition: color .15s; white-space: nowrap; }
-  .nav-links a:hover { color: #ffffff; }
-  .nav-cta {
-    background: #f5f5f5; color: #0a0a0a; font-weight: 600; font-size: 14px;
-    padding: 8px 20px; border-radius: 10px; transition: opacity .15s, transform .15s;
-  }
-  .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
-
-  /* ========== Hero：左文案 + 右透视产品模型 ========== */
-  .hero { position: relative; padding: 88px 0 110px; overflow: hidden; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(600px 320px at 78% 42%, rgba(59, 130, 246, .13), transparent 70%),
-      radial-gradient(520px 300px at 88% 70%, rgba(139, 92, 246, .10), transparent 70%);
-  }
-  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; }
-  .hero-badge {
-    display: inline-block; padding: 8px 16px; border-radius: 10px;
-    background: #161616; border: 1px solid #262626; color: #d4d4d4;
-    font-size: 14px; margin-bottom: 28px;
-  }
-  .hero h1 {
-    font-size: clamp(44px, 5.6vw, 76px); font-weight: 800; line-height: 1.12;
-    letter-spacing: -.02em;
-    background: linear-gradient(180deg, #ffffff 20%, #8f8f8f 100%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .hero .sub { margin-top: 26px; font-size: 16px; color: var(--muted); max-width: 460px; line-height: 1.75; }
-  .hero .cta { margin-top: 38px; display: flex; gap: 14px; align-items: center; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 9px;
-    padding: 13px 26px; border-radius: 12px; font-size: 15px; font-weight: 600;
-    transition: transform .15s, opacity .15s, border-color .15s, background .15s;
-  }
-  .btn-primary { background: #f5f5f5; color: #0a0a0a; }
-  .btn-primary:hover { transform: translateY(-2px); opacity: .88; }
-  .btn-ghost { border: 1px solid var(--border-hi); color: var(--text); }
-  .btn-ghost:hover { border-color: #555; transform: translateY(-2px); }
-  .arrow { transition: transform .15s; }
-  .btn:hover .arrow { transform: translateX(3px); }
-
-  /* 右侧：透视倾斜的应用界面模型（纯 CSS 手绘） */
-  .stage { perspective: 1600px; position: relative; min-height: 460px; }
-  .mockup {
-    position: relative; transform: rotateX(12deg) rotateY(-20deg) rotate(2deg);
-    transform-style: preserve-3d;
-    background: var(--panel); border: 1px solid #262626; border-radius: 16px;
-    box-shadow: 0 40px 120px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .03) inset;
-    overflow: hidden; font-size: 12px;
-  }
-  .mock-bar {
-    display: flex; align-items: center; gap: 7px; padding: 11px 14px;
-    border-bottom: 1px solid #1c1c1c; color: #8a8a8a;
-  }
-  .mock-bar .t { font-size: 11px; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; background: #2e2e2e; }
-  .mock-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-  .bub { max-width: 86%; padding: 10px 13px; border-radius: 12px; line-height: 1.6; }
-  .bub-user { align-self: flex-end; background: #1d1d1d; color: #e5e5e5; border-bottom-right-radius: 4px; }
-  .bub-ai { align-self: flex-start; background: #141414; color: #b8b8b8; border-bottom-left-radius: 4px; }
-  .tool {
-    display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
-    font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 11px;
-    color: #a3a3a3; background: #101010; border: 1px solid #222; border-radius: 8px; padding: 6px 11px;
-  }
-  .tool .tag { color: #565656; }
-  .tool .ok { color: var(--ok); }
-  .float-card {
-    position: absolute; right: -14px; bottom: -30px; width: 250px;
-    background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 14px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, .65);
-    padding: 14px; font-size: 12px;
-    transform: rotateX(12deg) rotateY(-20deg) translateZ(46px);
-  }
-  .float-card h4 { font-size: 11px; color: #7a7a7a; font-weight: 500; margin-bottom: 10px; }
-  .pool-row {
-    display: flex; align-items: center; gap: 9px; padding: 8px 10px;
-    border-radius: 9px; border: 1px solid #1e1e1e; margin-bottom: 7px; color: #d4d4d4;
-  }
-  .pool-row.active { border-color: #2f2f2f; background: #151515; }
-  .pool-row .st { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-left: auto; }
-  .pool-row .st.off { background: #333; }
-  .pool-row .nm { font-family: ui-monospace, Consolas, monospace; font-size: 11px; }
-
-  /* ========== Logo 走马灯 ========== */
-  .trust { border-top: 1px solid #131313; border-bottom: 1px solid #131313; background: #070707; padding: 34px 0; overflow: hidden; }
-  .trust-label { text-align: center; font-size: 13px; color: var(--dim); margin-bottom: 24px; }
-  .marquee { display: flex; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
-  .marquee-track { display: flex; gap: 72px; padding-right: 72px; animation: scroll 26s linear infinite; flex-shrink: 0; }
-  .marquee-track span {
-    font-weight: 700; font-size: 20px; color: #565656; letter-spacing: -.01em; white-space: nowrap;
-    transition: color .2s;
-  }
-  .marquee-track span:hover { color: #a3a3a3; }
-  .marquee-track .mono { font-family: ui-monospace, Consolas, monospace; font-weight: 600; }
-  @keyframes scroll { to { transform: translateX(-100%); } }
-
-  /* ========== 分区通用 ========== */
-  section { padding: 96px 0; }
-  .sec-head { margin-bottom: 52px; }
-  .sec-head h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
-  .sec-head p { margin-top: 12px; color: var(--muted); font-size: 15px; max-width: 560px; }
-
-  /* 能力会话：四块暗色瓦片 + 彩色氛围光 */
-  .sessions { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-  .session {
-    position: relative; overflow: hidden;
-    background: var(--panel); border: 1px solid var(--border); border-radius: 18px;
-    padding: 28px 24px; transition: transform .18s, border-color .18s;
-  }
-  .session::before {
-    content: ""; position: absolute; top: -70px; right: -70px; width: 190px; height: 190px;
-    border-radius: 50%; filter: blur(58px); opacity: .22; pointer-events: none;
-    transition: opacity .2s;
-  }
-  .session:hover { transform: translateY(-4px); border-color: var(--border-hi); }
-  .session:hover::before { opacity: .34; }
-  .session .em { font-size: 28px; }
-  .session h3 { margin-top: 16px; font-size: 17px; font-weight: 700; }
-  .session p { margin-top: 8px; font-size: 13px; color: var(--muted); line-height: 1.65; }
-  .session.s-chat::before { background: #3b82f6; }
-  .session.s-image::before { background: #8b5cf6; }
-  .session.s-video::before { background: #ec4899; }
-  .session.s-music::before { background: #f59e0b; }
-
-  /* 功能卡片 */
-  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
-  .card {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
-    padding: 26px 24px; transition: transform .18s, border-color .18s;
-  }
-  .card:hover { transform: translateY(-3px); border-color: var(--border-hi); }
-  .card .em {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 44px; height: 44px; border-radius: 11px; font-size: 21px;
-    background: #161616; border: 1px solid #242424;
-  }
-  .card h3 { margin-top: 16px; font-size: 16px; font-weight: 700; }
-  .card p { margin-top: 8px; font-size: 14px; color: var(--muted); line-height: 1.7; }
-
-  /* 开源 / 赞助 */
-  .panel {
-    max-width: 760px; margin: 0 auto; text-align: center;
-    background: var(--panel); border: 1px solid var(--border); border-radius: 22px;
-    padding: 52px 34px;
-  }
-  .panel h3 { font-size: 22px; font-weight: 800; }
-  .panel p { margin-top: 12px; color: var(--muted); font-size: 14px; }
-  .panel .row { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .qrs { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
-  .qr { background: #ffffff; border-radius: 16px; padding: 12px; }
-  .qr img { width: 190px; height: 190px; display: block; border-radius: 8px; }
-  .qr figcaption { margin-top: 10px; font-size: 12px; color: #525252; text-align: center; }
-  .sponsor-note { max-width: 640px; margin: 24px auto 0; font-size: 12px; color: var(--dim); text-align: center; line-height: 1.7; }
-
-  footer { border-top: 1px solid #161616; padding: 36px 0 46px; margin-top: 48px; }
-  .foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--dim); }
-  .foot a:hover { color: var(--text); }
-  .foot .links { display: flex; gap: 22px; }
-
-  @media (max-width: 960px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .stage { min-height: 0; margin-top: 26px; }
-    .mockup, .float-card { transform: none; }
-    .float-card { position: static; width: 100%; margin-top: 14px; }
-    .nav-links { display: none; }
-    section { padding: 64px 0; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
@@ -228,12 +14,12 @@
 
 <nav>
   <div class="wrap nav-in">
-    <a class="logo" href="#">aglab<span class="bracket">〈AI 编程助手〉</span></a>
+    <a class="logo" href="index.html">aglab<span class="bracket">〈AI 编程助手〉</span></a>
     <div class="nav-links">
-      <a href="#sessions">能力会话</a>
-      <a href="#features">功能</a>
-      <a href="#opensource">开源</a>
-      <a href="#sponsor">赞助</a>
+      <a href="sessions.html">能力会话</a>
+      <a href="features.html">功能</a>
+      <a href="opensource.html">开源</a>
+      <a href="sponsor.html">赞助</a>
     </div>
     <a class="nav-cta" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
   </div>
@@ -290,66 +76,32 @@
   </div>
 </div>
 
-<section id="sessions">
+<section>
   <div class="wrap">
     <div class="sec-head">
-      <h2>四类能力会话，各干各的活</h2>
-      <p>聊天是聊天，生成是生成——不同任务各有独立界面与存档，互不打架</p>
-    </div>
-    <div class="sessions">
-      <div class="session s-chat"><span class="em">💬</span><h3>对话</h3><p>多服务商档案与模型池路由，分支树、全文搜索、自动压缩，缓存保温省钱</p></div>
-      <div class="session s-image"><span class="em">🖼️</span><h3>生图</h3><p>图生图与参数面板，参考图直接喂给模型，多张产出一次到位</p></div>
-      <div class="session s-video"><span class="em">🎬</span><h3>视频</h3><p>文本/图像/视频转视频三模式，首尾帧精确控制，比例时长分辨率随调</p></div>
-      <div class="session s-music"><span class="em">🎵</span><h3>音乐</h3><p>多家族 API 自动探测，描述或歌词直出成曲，就地试听</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="features" style="padding-top: 8px;">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>工具能干活，也要守规矩</h2>
-      <p>每一步执行都有规则、审批与审计兜底——能力越强，收容越紧</p>
+      <h2>往里看一眼</h2>
+      <p>三页各自展开——能力会话怎么分工、工具怎么被收容、这个项目怎么开源</p>
     </div>
     <div class="features">
-      <div class="card"><span class="em">🧰</span><h3>工具系统</h3><p>读写、命令、网络检索等内置工具；模型在你的工作目录里真正动手干活</p></div>
-      <div class="card"><span class="em">🛡️</span><h3>逐调用沙箱</h3><p>命令在低完整性沙箱与 Job Object 收容下执行，规则库 + 审批（单次放行 / 总是允许）说了算</p></div>
-      <div class="card"><span class="em">📜</span><h3>审计中心</h3><p>敏感信息自动打码，删除进回收站并有自动备份兜底，出了事能回溯</p></div>
-      <div class="card"><span class="em">👁️</span><h3>多模态识别</h3><p>图片、视频、音频本体随行发给支持的模型——看图听音，按能力逐个放行</p></div>
-      <div class="card"><span class="em">🤖</span><h3>MCP 扩展</h3><p>stdio / HTTP 服务器即插即用，支持 OAuth 接入，工具总开关一键收放</p></div>
-      <div class="card"><span class="em">🎯</span><h3>目标模式</h3><p>给一个目标，模型带着判据清单自主推进、自我修复，直到验收通过</p></div>
-      <div class="card"><span class="em">⏰</span><h3>定时任务</h3><p>每周计划与 cron 表达式触发后台任务，跑完系统通知，结果进会话</p></div>
-      <div class="card"><span class="em">🧠</span><h3>记忆与知识库</h3><p>长对话自动压缩，关键结论蒸馏进记忆；本地知识库随问随检索</p></div>
+      <a class="link-card" href="sessions.html">
+        <span class="em">🎬</span>
+        <h3>能力会话</h3>
+        <p>对话、生图、视频、音乐四类会话各有独立界面与存档——聊天是聊天，生成是生成</p>
+        <span class="go">了解能力会话 →</span>
+      </a>
+      <a class="link-card" href="features.html">
+        <span class="em">🧰</span>
+        <h3>功能全览</h3>
+        <p>工具沙箱、审批与审计、MCP、目标模式、定时任务、记忆与知识库——能力越强，收容越紧</p>
+        <span class="go">查看全部功能 →</span>
+      </a>
+      <a class="link-card" href="opensource.html">
+        <span class="em">⚖️</span>
+        <h3>开源与开发</h3>
+        <p>AGPL-3.0 开源，源码就在 GitHub；本地开发、测试与构建一条龙说明</p>
+        <span class="go">开源与开发 →</span>
+      </a>
     </div>
-  </div>
-</section>
-
-<section id="opensource">
-  <div class="wrap">
-    <div class="panel">
-      <h3>开源 · AGPL-3.0</h3>
-      <p>aglab 基于 AGPL-3.0 协议开源，源码就在 GitHub。<br />自由使用、学习、修改与分发；商业用途需事先获得作者书面授权。</p>
-      <div class="row">
-        <a class="btn btn-primary" href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">GitHub 仓库</a>
-        <a class="btn btn-ghost" href="https://github.com/Technicalflight/aglab/blob/main/LICENSE" target="_blank" rel="noopener">查看许可证</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="sponsor" style="padding-top: 8px;">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>请作者喝一杯</h2>
-      <p>如果 aglab 对你有帮助，欢迎请作者喝杯咖啡或可乐 ☕🥤</p>
-    </div>
-    <div class="qrs">
-      <figure class="qr"><img src="assets/alipay_qr.png" alt="支付宝收款码" /><figcaption>支付宝 Alipay</figcaption></figure>
-      <figure class="qr"><img src="assets/wechat_qr.png" alt="微信收款码" /><figcaption>微信 WeChat Pay</figcaption></figure>
-    </div>
-    <p class="sponsor-note">
-      赞助是完全自愿的感谢行为，不会提高或加快任何功能与修复的优先级——是否赞助、赞助多少与开发完全无关。
-    </p>
   </div>
 </section>
 
@@ -359,7 +111,7 @@
     <div class="links">
       <a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">GitHub</a>
       <a href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
-      <a href="https://linux.do" target="_blank" rel="noopener">Linux.Do</a>
+      <a href="sponsor.html">赞助</a>
     </div>
   </div>
 </footer>

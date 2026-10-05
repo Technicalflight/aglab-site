@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>开源与开发 — aglab</title>
+<meta name="description" content="aglab 基于 AGPL-3.0 开源：源码、许可证、本地开发与构建说明、CI 与发布流程。" />
+<link rel="icon" type="image/png" href="assets/icon.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="announce">🎉 aglab 现已开源（AGPL-3.0），<a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">来 GitHub 看看源码 →</a></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html">aglab<span class="bracket">〈AI 编程助手〉</span></a>
+    <div class="nav-links">
+      <a href="sessions.html">能力会话</a>
+      <a href="features.html">功能</a>
+      <a class="active" href="opensource.html">开源</a>
+      <a href="sponsor.html">赞助</a>
+    </div>
+    <a class="nav-cta" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
+  </div>
+</nav>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>开源，且经得起看</h2>
+      <p>源码、许可证、构建流程全部公开——CI 在每次提交上自动跑双管道测试</p>
+    </div>
+    <div class="panel">
+      <h3>AGPL-3.0</h3>
+      <p>你可以自由地使用、学习、修改和分发本项目，但须完整遵循 AGPL-3.0 的全部条款，<br />包括通过<b>网络提供服务</b>时也须向使用者开放源代码的义务。<br /><br /><b>⚠️ 商用需授权：任何商业用途必须事先获得作者书面授权。</b></p>
+      <div class="row">
+        <a class="btn btn-primary" href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">GitHub 仓库</a>
+        <a class="btn btn-ghost" href="https://github.com/Technicalflight/aglab/blob/main/LICENSE" target="_blank" rel="noopener">查看许可证</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 8px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>本地开发</h2>
+      <p>前置要求：Node.js 22+、Rust stable（MSVC 工具链）、Windows 10/11</p>
+    </div>
+    <div class="code">
+      <span class="c"># 安装前端依赖</span><br />
+      npm install<br /><br />
+      <span class="c"># 本地开发（前端热更新 + Rust 增量编译）</span><br />
+      npm run tauri dev<br /><br />
+      <span class="c"># 测试：前端 vitest · 后端 cargo（1100+ 条）</span><br />
+      npm test<br />
+      cd src-tauri && cargo test --lib<br /><br />
+      <span class="c"># 构建 Windows 安装包（NSIS / MSI）</span><br />
+      npm run tauri build
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 8px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>CI 与发布</h2>
+      <p>推上 main 就有人替你把关</p>
+    </div>
+    <div class="features">
+      <div class="card"><span class="em">🔁</span><h3>CI 双管道</h3><p>每次 push 与 PR 自动跑：前端 tsc + vitest + vite 构建（Ubuntu）；后端 1100+ 条 cargo 测试（Windows）</p></div>
+      <div class="card"><span class="em">📦</span><h3>Tag 发布</h3><p>打 v* 标签自动构建 NSIS / MSI 安装包并挂到 GitHub Release 草稿，检查附件后手动发布</p></div>
+      <div class="card"><span class="em">🔐</span><h3>依赖审计</h3><p>每周自动对照 RustSec 数据库扫描 Rust 依赖的已知漏洞，报告透明可查</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 8px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>文件结构</h2>
+    </div>
+    <div class="code">
+      aglab/<br />
+      ├── src/                  <span class="c"># React 19 + TypeScript 前端（Vite）</span><br />
+      ├── src-tauri/            <span class="c"># Rust 后端（Tauri 2）：会话/工具/生成管线/存储</span><br />
+      ├── .github/workflows/    <span class="c"># CI / 发布 / 安全审计工作流</span><br />
+      └── assets/               <span class="c"># README 配图</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Technicalflight · aglab</span>
+    <div class="links">
+      <a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
+      <a href="sponsor.html">赞助</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>能力会话 — aglab</title>
+<meta name="description" content="aglab 的四类能力会话：对话、生图、视频、音乐——各有独立界面与存档，生成会话与对话机制完全隔离，不占对话上下文。" />
+<link rel="icon" type="image/png" href="assets/icon.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="announce">🎉 aglab 现已开源（AGPL-3.0），<a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">来 GitHub 看看源码 →</a></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html">aglab<span class="bracket">〈AI 编程助手〉</span></a>
+    <div class="nav-links">
+      <a class="active" href="sessions.html">能力会话</a>
+      <a href="features.html">功能</a>
+      <a href="opensource.html">开源</a>
+      <a href="sponsor.html">赞助</a>
+    </div>
+    <a class="nav-cta" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
+  </div>
+</nav>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>四类能力会话，各干各的活</h2>
+      <p>侧栏「新对话」按能力分四档入口——聊天是聊天，生成是生成，各有独立界面、独立存档，互不打架</p>
+    </div>
+    <div class="sessions">
+      <div class="session s-chat"><span class="em">💬</span><h3>对话</h3><p>多服务商档案与模型池路由，分支树、全文搜索、自动压缩，缓存保温省钱。模型在工作目录里读代码、跑命令、改文件</p></div>
+      <div class="session s-image"><span class="em">🖼️</span><h3>生图</h3><p>文本生图与图生图，参考图直接喂给模型；分辨率、质量、张数在参数面板里调，多张产出一次到位</p></div>
+      <div class="session s-video"><span class="em">🎬</span><h3>视频</h3><p>文本/图像/视频转视频三模式；图像模式支持首帧 + 可选尾帧，比例、时长、分辨率逐项可调</p></div>
+      <div class="session s-music"><span class="em">🎵</span><h3>音乐</h3><p>简单描述、自定义歌词、让模型先写词三种玩法；多家族 API 自动探测，成曲就地试听</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 8px;">
+  <div class="wrap">
+    <div class="features">
+      <div class="card"><span class="em">🚪</span><h3>入口隔离</h3><p>四类会话从侧栏分列入口创建，kind 随会话持久化——切走再回来，界面与内容都在原处</p></div>
+      <div class="card"><span class="em">🧱</span><h3>机制隔离</h3><p>生成会话不进对话轮、不占对话上下文、不发系统提示词——产物只进会话存档，按次计费清清楚楚</p></div>
+      <div class="card"><span class="em">🎯</span><h3>按会话选模型</h3><p>每档能力记各自的模型行，选择器按能力过滤候选；模型住在哪个档案，请求就路由到哪</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 8px;">
+  <div class="wrap">
+    <div class="panel">
+      <h3>产物都是你的</h3>
+      <p>生成的图片、视频、音乐全部落在本机应用数据目录（而不是临时文件夹），重开会话随取随用；<br />会话存档完整保留提示词与产物对应关系，回溯每一次生成。</p>
+      <div class="row">
+        <a class="btn btn-primary" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载体验 <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="features.html">看看全部功能</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Technicalflight · aglab</span>
+    <div class="links">
+      <a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
+      <a href="sponsor.html">赞助</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
