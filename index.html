@@ -7,32 +7,17 @@
 <meta name="description" content="aglab 是一个 Windows 桌面端 AI 编程助手：接入你自己的模型服务商，在工作目录里安全地读代码、跑命令、改文件；支持生图/视频/音乐与多模态识别。开源（AGPL-3.0）。" />
 <link rel="icon" type="image/png" href="assets/icon.png" />
 <style>
-  /* ========== 设计令牌（浅色为主，自动适配深色；蓝紫渐变点缀，Kimi 平台式干净留白） ========== */
+  /* ========== 令牌：深色开发者风（对齐 platform.kimi.com 的黑底白字 + 透视产品视觉） ========== */
   :root {
-    --bg: #ffffff;
-    --bg-soft: #f8fafc;
-    --card: #ffffff;
-    --text: #0f172a;
-    --muted: #64748b;
-    --border: #e2e8f0;
-    --brand: #3b82f6;
-    --brand-2: #8b5cf6;
-    --brand-ink: #1d4ed8;
-    --shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 8px 24px rgba(15, 23, 42, .06);
-    --shadow-lg: 0 2px 4px rgba(15, 23, 42, .05), 0 16px 48px rgba(15, 23, 42, .10);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0b1020;
-      --bg-soft: #0e1526;
-      --card: #111a2e;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --border: #1e293b;
-      --brand-ink: #93c5fd;
-      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
-      --shadow-lg: 0 2px 4px rgba(0, 0, 0, .35), 0 16px 48px rgba(0, 0, 0, .4);
-    }
+    --bg: #050505;
+    --panel: #0d0d0d;
+    --panel-2: #111111;
+    --border: #222222;
+    --border-hi: #333333;
+    --text: #f5f5f5;
+    --muted: #9b9b9b;
+    --dim: #6b6b6b;
+    --ok: #22c55e;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -45,198 +30,269 @@
     overflow-x: hidden;
   }
   a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+  /* ========== 顶部公告条 ========== */
+  .announce {
+    text-align: center; font-size: 13px; padding: 9px 16px;
+    background: #0a0a0a; border-bottom: 1px solid #161616; color: #c9c9c9;
+  }
+  .announce a { text-decoration: underline; text-underline-offset: 3px; color: #fff; }
+  .announce a:hover { color: var(--dim); }
 
   /* ========== 导航 ========== */
   nav {
     position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    background: color-mix(in srgb, var(--bg) 78%, transparent);
-    border-bottom: 1px solid var(--border);
+    background: rgba(5, 5, 5, .82);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid #161616;
   }
-  .nav-in { display: flex; align-items: center; gap: 28px; height: 60px; }
-  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -.01em; }
-  .logo img { width: 28px; height: 28px; border-radius: 8px; }
-  .nav-links { display: flex; gap: 4px; margin-left: auto; }
-  .nav-links a {
-    padding: 7px 14px; border-radius: 999px; font-size: 14px; color: var(--muted);
-    transition: color .15s, background .15s;
+  .nav-in { display: flex; align-items: center; height: 64px; gap: 40px; }
+  .logo { font-weight: 800; font-size: 19px; letter-spacing: .02em; white-space: nowrap; }
+  .logo .bracket { font-weight: 300; color: #d4d4d4; }
+  .nav-links { display: flex; gap: 36px; margin-left: auto; font-size: 15px; color: #d4d4d4; }
+  .nav-links a { transition: color .15s; white-space: nowrap; }
+  .nav-links a:hover { color: #ffffff; }
+  .nav-cta {
+    background: #f5f5f5; color: #0a0a0a; font-weight: 600; font-size: 14px;
+    padding: 8px 20px; border-radius: 10px; transition: opacity .15s, transform .15s;
   }
-  .nav-links a:hover { color: var(--text); background: var(--bg-soft); }
-  .nav-gh {
-    display: flex; align-items: center; gap: 7px;
-    padding: 7px 16px; border-radius: 999px; font-size: 14px; font-weight: 600;
-    border: 1px solid var(--border); transition: border-color .15s, transform .15s;
-  }
-  .nav-gh:hover { border-color: var(--brand); transform: translateY(-1px); }
-  .nav-gh svg { width: 16px; height: 16px; fill: currentColor; }
+  .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
 
-  /* ========== Hero ========== */
-  .hero { position: relative; text-align: center; padding: 96px 0 72px; overflow: visible; }
-  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .18; pointer-events: none; z-index: -1; }
-  .blob-1 { width: 460px; height: 460px; background: var(--brand); top: -120px; left: 8%; }
-  .blob-2 { width: 380px; height: 380px; background: var(--brand-2); top: -40px; right: 6%; }
-  @media (prefers-color-scheme: dark) { .blob { opacity: .16; } }
-  .hero-icon {
-    width: 96px; height: 96px; border-radius: 24px; box-shadow: var(--shadow-lg);
-    animation: rise .7s ease both;
+  /* ========== Hero：左文案 + 右透视产品模型 ========== */
+  .hero { position: relative; padding: 88px 0 110px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(600px 320px at 78% 42%, rgba(59, 130, 246, .13), transparent 70%),
+      radial-gradient(520px 300px at 88% 70%, rgba(139, 92, 246, .10), transparent 70%);
+  }
+  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; }
+  .hero-badge {
+    display: inline-block; padding: 8px 16px; border-radius: 10px;
+    background: #161616; border: 1px solid #262626; color: #d4d4d4;
+    font-size: 14px; margin-bottom: 28px;
   }
   .hero h1 {
-    margin-top: 28px; font-size: clamp(40px, 7vw, 64px); font-weight: 800;
-    letter-spacing: -.03em; line-height: 1.1; animation: rise .7s .08s ease both;
-  }
-  .hero h1 .grad {
-    background: linear-gradient(100deg, var(--brand), var(--brand-2));
+    font-size: clamp(44px, 5.6vw, 76px); font-weight: 800; line-height: 1.12;
+    letter-spacing: -.02em;
+    background: linear-gradient(180deg, #ffffff 20%, #8f8f8f 100%);
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .hero .sub {
-    margin: 18px auto 0; max-width: 620px; font-size: 18px; color: var(--muted);
-    animation: rise .7s .16s ease both;
-  }
-  .cta { margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: rise .7s .24s ease both; }
+  .hero .sub { margin-top: 26px; font-size: 16px; color: var(--muted); max-width: 460px; line-height: 1.75; }
+  .hero .cta { margin-top: 38px; display: flex; gap: 14px; align-items: center; }
   .btn {
     display: inline-flex; align-items: center; gap: 9px;
-    padding: 13px 26px; border-radius: 14px; font-size: 15px; font-weight: 600;
-    transition: transform .15s, box-shadow .15s, border-color .15s;
+    padding: 13px 26px; border-radius: 12px; font-size: 15px; font-weight: 600;
+    transition: transform .15s, opacity .15s, border-color .15s, background .15s;
   }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-primary {
-    color: #fff; background: linear-gradient(100deg, var(--brand), var(--brand-2));
-    box-shadow: 0 8px 24px rgba(59, 130, 246, .35);
-  }
-  .btn-primary:hover { box-shadow: 0 12px 32px rgba(59, 130, 246, .45); }
-  .btn-ghost { border: 1px solid var(--border); background: var(--card); }
-  .btn-ghost:hover { border-color: var(--brand); }
-  .btn svg { width: 17px; height: 17px; fill: currentColor; }
-  .meta {
-    margin-top: 26px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
-    font-size: 13px; color: var(--muted); animation: rise .7s .32s ease both;
-  }
-  .meta span { display: inline-flex; align-items: center; gap: 6px; }
-  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); opacity: .6; }
-  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .btn-primary { background: #f5f5f5; color: #0a0a0a; }
+  .btn-primary:hover { transform: translateY(-2px); opacity: .88; }
+  .btn-ghost { border: 1px solid var(--border-hi); color: var(--text); }
+  .btn-ghost:hover { border-color: #555; transform: translateY(-2px); }
+  .arrow { transition: transform .15s; }
+  .btn:hover .arrow { transform: translateX(3px); }
 
-  /* ========== 通用分区 ========== */
-  section { padding: 72px 0; }
-  .sec-head { text-align: center; margin-bottom: 48px; }
-  .sec-head .kicker {
-    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .12em;
-    color: var(--brand-ink); text-transform: uppercase; margin-bottom: 12px;
+  /* 右侧：透视倾斜的应用界面模型（纯 CSS 手绘） */
+  .stage { perspective: 1600px; position: relative; min-height: 460px; }
+  .mockup {
+    position: relative; transform: rotateX(12deg) rotateY(-20deg) rotate(2deg);
+    transform-style: preserve-3d;
+    background: var(--panel); border: 1px solid #262626; border-radius: 16px;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .03) inset;
+    overflow: hidden; font-size: 12px;
   }
-  .sec-head h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -.02em; }
-  .sec-head p { margin-top: 12px; color: var(--muted); font-size: 15px; }
+  .mock-bar {
+    display: flex; align-items: center; gap: 7px; padding: 11px 14px;
+    border-bottom: 1px solid #1c1c1c; color: #8a8a8a;
+  }
+  .mock-bar .t { font-size: 11px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #2e2e2e; }
+  .mock-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .bub { max-width: 86%; padding: 10px 13px; border-radius: 12px; line-height: 1.6; }
+  .bub-user { align-self: flex-end; background: #1d1d1d; color: #e5e5e5; border-bottom-right-radius: 4px; }
+  .bub-ai { align-self: flex-start; background: #141414; color: #b8b8b8; border-bottom-left-radius: 4px; }
+  .tool {
+    display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 11px;
+    color: #a3a3a3; background: #101010; border: 1px solid #222; border-radius: 8px; padding: 6px 11px;
+  }
+  .tool .tag { color: #565656; }
+  .tool .ok { color: var(--ok); }
+  .float-card {
+    position: absolute; right: -14px; bottom: -30px; width: 250px;
+    background: #0f0f0f; border: 1px solid #2a2a2a; border-radius: 14px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .65);
+    padding: 14px; font-size: 12px;
+    transform: rotateX(12deg) rotateY(-20deg) translateZ(46px);
+  }
+  .float-card h4 { font-size: 11px; color: #7a7a7a; font-weight: 500; margin-bottom: 10px; }
+  .pool-row {
+    display: flex; align-items: center; gap: 9px; padding: 8px 10px;
+    border-radius: 9px; border: 1px solid #1e1e1e; margin-bottom: 7px; color: #d4d4d4;
+  }
+  .pool-row.active { border-color: #2f2f2f; background: #151515; }
+  .pool-row .st { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-left: auto; }
+  .pool-row .st.off { background: #333; }
+  .pool-row .nm { font-family: ui-monospace, Consolas, monospace; font-size: 11px; }
 
-  /* ========== 能力会话（四渐变瓦片） ========== */
-  .sessions { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  /* ========== Logo 走马灯 ========== */
+  .trust { border-top: 1px solid #131313; border-bottom: 1px solid #131313; background: #070707; padding: 34px 0; overflow: hidden; }
+  .trust-label { text-align: center; font-size: 13px; color: var(--dim); margin-bottom: 24px; }
+  .marquee { display: flex; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+  .marquee-track { display: flex; gap: 72px; padding-right: 72px; animation: scroll 26s linear infinite; flex-shrink: 0; }
+  .marquee-track span {
+    font-weight: 700; font-size: 20px; color: #565656; letter-spacing: -.01em; white-space: nowrap;
+    transition: color .2s;
+  }
+  .marquee-track span:hover { color: #a3a3a3; }
+  .marquee-track .mono { font-family: ui-monospace, Consolas, monospace; font-weight: 600; }
+  @keyframes scroll { to { transform: translateX(-100%); } }
+
+  /* ========== 分区通用 ========== */
+  section { padding: 96px 0; }
+  .sec-head { margin-bottom: 52px; }
+  .sec-head h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; }
+  .sec-head p { margin-top: 12px; color: var(--muted); font-size: 15px; max-width: 560px; }
+
+  /* 能力会话：四块暗色瓦片 + 彩色氛围光 */
+  .sessions { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
   .session {
-    border-radius: 20px; padding: 26px 22px; color: #fff; position: relative; overflow: hidden;
-    box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s;
+    position: relative; overflow: hidden;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 18px;
+    padding: 28px 24px; transition: transform .18s, border-color .18s;
   }
-  .session:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .session .em { font-size: 30px; }
-  .session h3 { margin-top: 12px; font-size: 17px; font-weight: 700; }
-  .session p { margin-top: 6px; font-size: 13px; opacity: .88; line-height: 1.55; }
-  .s-chat  { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-  .s-image { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-  .s-video { background: linear-gradient(135deg, #ec4899, #db2777); }
-  .s-music { background: linear-gradient(135deg, #f59e0b, #d97706); }
+  .session::before {
+    content: ""; position: absolute; top: -70px; right: -70px; width: 190px; height: 190px;
+    border-radius: 50%; filter: blur(58px); opacity: .22; pointer-events: none;
+    transition: opacity .2s;
+  }
+  .session:hover { transform: translateY(-4px); border-color: var(--border-hi); }
+  .session:hover::before { opacity: .34; }
+  .session .em { font-size: 28px; }
+  .session h3 { margin-top: 16px; font-size: 17px; font-weight: 700; }
+  .session p { margin-top: 8px; font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .session.s-chat::before { background: #3b82f6; }
+  .session.s-image::before { background: #8b5cf6; }
+  .session.s-video::before { background: #ec4899; }
+  .session.s-music::before { background: #f59e0b; }
 
-  /* ========== 功能卡片 ========== */
+  /* 功能卡片 */
   .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
   .card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
-    padding: 24px; box-shadow: var(--shadow); transition: transform .18s, border-color .18s;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 16px;
+    padding: 26px 24px; transition: transform .18s, border-color .18s;
   }
-  .card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--brand) 45%, var(--border)); }
+  .card:hover { transform: translateY(-3px); border-color: var(--border-hi); }
   .card .em {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 44px; height: 44px; border-radius: 12px; font-size: 22px;
-    background: color-mix(in srgb, var(--brand) 10%, var(--bg-soft));
+    width: 44px; height: 44px; border-radius: 11px; font-size: 21px;
+    background: #161616; border: 1px solid #242424;
   }
-  .card h3 { margin-top: 14px; font-size: 16px; font-weight: 700; }
-  .card p { margin-top: 7px; font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .card h3 { margin-top: 16px; font-size: 16px; font-weight: 700; }
+  .card p { margin-top: 8px; font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-  /* ========== 开源 / 赞助 ========== */
+  /* 开源 / 赞助 */
   .panel {
-    max-width: 720px; margin: 0 auto; text-align: center;
-    background: var(--card); border: 1px solid var(--border); border-radius: 24px;
-    padding: 44px 32px; box-shadow: var(--shadow);
+    max-width: 760px; margin: 0 auto; text-align: center;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 22px;
+    padding: 52px 34px;
   }
-  .panel h3 { font-size: 20px; font-weight: 800; }
-  .panel p { margin-top: 10px; color: var(--muted); font-size: 14px; }
-  .panel .row { margin-top: 22px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .qrs { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
-  .qr {
-    background: var(--card); border: 1px solid var(--border); border-radius: 18px;
-    padding: 14px; box-shadow: var(--shadow);
-  }
-  .qr img { width: 200px; height: 200px; display: block; border-radius: 10px; }
-  .qr figcaption { margin-top: 10px; font-size: 12px; color: var(--muted); }
-  .sponsor-note { max-width: 620px; margin: 22px auto 0; font-size: 12px; color: var(--muted); text-align: center; }
+  .panel h3 { font-size: 22px; font-weight: 800; }
+  .panel p { margin-top: 12px; color: var(--muted); font-size: 14px; }
+  .panel .row { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .qrs { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+  .qr { background: #ffffff; border-radius: 16px; padding: 12px; }
+  .qr img { width: 190px; height: 190px; display: block; border-radius: 8px; }
+  .qr figcaption { margin-top: 10px; font-size: 12px; color: #525252; text-align: center; }
+  .sponsor-note { max-width: 640px; margin: 24px auto 0; font-size: 12px; color: var(--dim); text-align: center; line-height: 1.7; }
 
-  footer { border-top: 1px solid var(--border); padding: 34px 0 44px; margin-top: 40px; }
-  .foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); }
+  footer { border-top: 1px solid #161616; padding: 36px 0 46px; margin-top: 48px; }
+  .foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--dim); }
   .foot a:hover { color: var(--text); }
-  .foot .links { display: flex; gap: 18px; }
+  .foot .links { display: flex; gap: 22px; }
 
-  @media (max-width: 640px) {
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .stage { min-height: 0; margin-top: 26px; }
+    .mockup, .float-card { transform: none; }
+    .float-card { position: static; width: 100%; margin-top: 14px; }
     .nav-links { display: none; }
-    .hero { padding: 64px 0 48px; }
-    section { padding: 52px 0; }
+    section { padding: 64px 0; }
   }
 </style>
 </head>
 <body>
 
+<div class="announce">🎉 aglab 现已开源（AGPL-3.0），<a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">来 GitHub 看看源码 →</a></div>
+
 <nav>
   <div class="wrap nav-in">
-    <a class="logo" href="#"><img src="assets/icon.png" alt="aglab 图标" />aglab</a>
+    <a class="logo" href="#">aglab<span class="bracket">〈AI 编程助手〉</span></a>
     <div class="nav-links">
-      <a href="#features">功能</a>
       <a href="#sessions">能力会话</a>
+      <a href="#features">功能</a>
       <a href="#opensource">开源</a>
       <a href="#sponsor">赞助</a>
     </div>
-    <a class="nav-gh" href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">
-      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-      GitHub
-    </a>
+    <a class="nav-cta" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="wrap">
-    <img class="hero-icon" src="assets/icon.png" alt="aglab 应用图标" />
-    <h1>aglab<span class="grad">·你的桌面 AI 工作台</span></h1>
-    <p class="sub">
-      接入你自己的模型服务商，让 AI 在指定工作目录里安全地读代码、跑命令、改文件——
-      写代码之外，还能生图、生视频、做音乐。
-    </p>
-    <div class="cta">
-      <a class="btn btn-primary" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M12 3v10.586l-3.293-3.293-1.414 1.414L12 16.414l4.707-4.707-1.414-1.414L13 13.586V3h-2Z"/><path d="M5 19v2h14v-2H5Z"/></svg>
-        下载 Windows 安装包
-      </a>
-      <a class="btn btn-ghost" href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-        查看源码
-      </a>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-badge">Windows 桌面端 · 开源</span>
+      <h1>模型你来接<br />干活它来干</h1>
+      <p class="sub">
+        aglab 接入你自己的模型服务商，让 AI 在指定工作目录里安全地读代码、跑命令、改文件——
+        每一步都有沙箱、审批与审计兜底。写代码之外，还能生图、生视频、做音乐。
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">
+          下载安装包 <span class="arrow">→</span>
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">查看源码</a>
+      </div>
     </div>
-    <div class="meta">
-      <span>Windows 10 / 11</span><span class="dot"></span>
-      <span>AGPL-3.0 开源</span><span class="dot"></span>
-      <span>自带模型接入</span><span class="dot"></span>
-      <span>本地存档</span>
+
+    <!-- 纯 CSS 手绘的应用界面透视模型 -->
+    <div class="stage" aria-hidden="true">
+      <div class="mockup">
+        <div class="mock-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="t" style="margin-left:8px">aglab · 对话</span></div>
+        <div class="mock-body">
+          <div class="bub bub-user">跑一下测试，然后总结失败原因</div>
+          <div class="bub bub-ai">好，我先跑测试套件，再看失败的用例。</div>
+          <span class="tool"><span class="tag">&lt;/&gt;</span> cargo test --lib <span class="ok">✓ 成功</span></span>
+          <span class="tool"><span class="tag">&lt;/&gt;</span> 读取 src/chat.rs <span class="ok">✓ 成功</span></span>
+          <div class="bub bub-ai">3 个失败都出在 media 模块的 mock 时序上——已定位到两处 await 竞态，要我直接修吗？</div>
+        </div>
+      </div>
+      <div class="float-card">
+        <h4>模型池 · 自动路由</h4>
+        <div class="pool-row active"><span class="nm">GLM-5.3-Flash</span><span class="st"></span></div>
+        <div class="pool-row"><span class="nm">deepseek-v3</span><span class="st off"></span></div>
+        <div class="pool-row"><span class="nm">claude-sonnet</span><span class="st off"></span></div>
+      </div>
     </div>
   </div>
 </header>
 
+<div class="trust">
+  <div class="wrap"><div class="trust-label">四条线协议，接得上主流模型生态</div></div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>OpenAI 兼容</span><span>Anthropic</span><span>Gemini</span><span class="mono">DeepSeek</span><span class="mono">Kimi</span><span class="mono">GLM</span><span class="mono">Qwen</span><span class="mono">Ollama</span>
+    </div>
+    <div class="marquee-track" aria-hidden="true">
+      <span>OpenAI 兼容</span><span>Anthropic</span><span>Gemini</span><span class="mono">DeepSeek</span><span class="mono">Kimi</span><span class="mono">GLM</span><span class="mono">Qwen</span><span class="mono">Ollama</span>
+    </div>
+  </div>
+</div>
+
 <section id="sessions">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Capability Sessions</span>
       <h2>四类能力会话，各干各的活</h2>
       <p>聊天是聊天，生成是生成——不同任务各有独立界面与存档，互不打架</p>
     </div>
@@ -249,10 +305,9 @@
   </div>
 </section>
 
-<section id="features" style="padding-top: 24px;">
+<section id="features" style="padding-top: 8px;">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Features</span>
       <h2>工具能干活，也要守规矩</h2>
       <p>每一步执行都有规则、审批与审计兜底——能力越强，收容越紧</p>
     </div>
@@ -282,10 +337,9 @@
   </div>
 </section>
 
-<section id="sponsor" style="padding-top: 24px;">
+<section id="sponsor" style="padding-top: 8px;">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">Sponsor</span>
       <h2>请作者喝一杯</h2>
       <p>如果 aglab 对你有帮助，欢迎请作者喝杯咖啡或可乐 ☕🥤</p>
     </div>
