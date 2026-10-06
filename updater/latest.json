@@ -1,11 +1,11 @@
 {
-  "version": "0.1.4",
-  "notes": "新增：屏幕顶部控制胶囊悬浮岛（电脑控制期间全程可见警示，置顶且不挡操作）、项目可移除（侧栏悬停删除 + 两步确认，只解绑不删文件）。",
-  "pub_date": "2026-10-06T13:10:53Z",
+  "version": "0.1.5",
+  "notes": "修复：失败回合后重试按钮静默失效（pending 卡死）；失败后重试成功，屏上不再残留重复的用户消息——旧失败记录归入分支历史可切回查看。",
+  "pub_date": "2026-10-06T14:13:56Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHRiS3B6cU5NaklvNE1BYTN0K3YyQ0RnaWhNT0hUKzBhc3Z6NGN1SXZ1aTBWemExRDBxSmZJcnlPUjhuS3Foeldrbk44VEd1cnpmeVZzeXc3cUlTNFFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjkyMjE4CWZpbGU6YWdsYWJfMC4xLjRfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS40CkVGWVp3dEZYS21ROWx5akJIZXV3ZDF3a2F1NngwVUhMMVFmbU9kOWFFMFM5ZkRqYld3UVp6Wld0RjcyUEJUeTl2b0xuYUw5UDVMdlR6ZURNRXhRWkFBPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.4_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHVHZ050VmJhdy9lSHV2Z1g1WTFaZGgzUlBYem1yNDBXV0x1YnR6ZkNYbnVFZ2FLbExNOGw5K3k2YmwxVDJyWTA5bUw0WkJzSGUvUmtsVEdUTVc2MndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjk2MDAyCWZpbGU6YWdsYWJfMC4xLjVfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS41CkZKZ1NmQ3R2SjgrbllYRFpRWTlPUEY0MjFMWFV4LzhQRThseUhic21nMkdVVWlLT1JFa0ZodGZ5WGlnSG9waENISUpCc2FvU1V4SjBqcUVkTkhqS0JnPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.5_x64-setup.exe"
     }
   }
 }
