@@ -1,11 +1,11 @@
 {
-  "version": "0.2.1",
-  "notes": "新增：资料库语义检索（自定义 embedding + 专用密钥 + 端点模型自动拉取）、Repo Wiki 一键导入。修复：资料库检索设置页满幅铺开。",
-  "pub_date": "2026-10-06T20:51:48Z",
+  "version": "0.2.2",
+  "notes": "新增：全球模型规格目录接入档案弹窗（能力/窗口自动识别预填 + 模糊匹配 + 能力徽章 + 多模态三开关自动勾选）。修复：下拉框空白处误拉开；omni 全模态模型分组与对话候选问题。",
+  "pub_date": "2026-10-06T21:51:16Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGlxYjRMQ2d0R0hMRDUzSHVHQ0NtclJqaFVxT2R2UlFwRm5HNzNWUDcvUWl6RWo3Y09mUnBodEgvSFVHVzJ4elBoVGdnc0pvUkE2YWhtV0VOVWs4OUE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzE5ODk3CWZpbGU6YWdsYWJfMC4yLjFfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi4xCkE3bS9tMkhLVlZ4OHlvOHBobGpZUWRCdDAxOHViTTRJczRBREpNa2NlcHo5WmFvSmlJOTN4eGtCM0dFMUJCdVlzMTA0WWJVMEFqSFhBbDJYRG1DV0NnPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.1_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHVqaWFiSFhzWExqcFc3T1d1ZndLWmJIUlBNVUIrbFhhd1MzdW1vTytGcXVJd3dROHVzLzdrcERrbEszaXdPMVVsaEdyTDN6V014Y2FRcUc2MWlEUkFVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzIzNDcxCWZpbGU6YWdsYWJfMC4yLjJfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi4yCjQvYXhkL0Q2Q01ybmxYd3ZKL1hzV0MrTS9oVFhTU2VyTkRyeStqcTUyWTJMSDA4WHBubklTR3VGazl1dDczRWpuUnVGREt2VDN5OEsyNU5JNUZVT0R3PT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.2_x64-setup.exe"
     }
   }
 }
