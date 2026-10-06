@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
-  "notes": "调整：请求链路胶囊动画挪到顶栏模型名旁（原挂在消息头行）。",
-  "pub_date": "2026-10-06T15:50:32Z",
+  "version": "0.1.9",
+  "notes": "新增：中转站探针页（注入检测 + 目标验证 + 综合评分 + 历史分页/详情/删除 + 指定模型探测 + 多中转对照）；修复：失败回合后重试按钮静默失效与用户消息重复叠出。",
+  "pub_date": "2026-10-06T17:13:01Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGtnT2hMczFFZDc3enR1ZlBRazFnUytHekltNVlFejR2azZSOGxLcVBpQnd0SmhvbTZBSk9jVEUzQ2t2RGFHekJNaTNFVXgrRkMvMFowRnRrZkNlWGdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzAxNzk3CWZpbGU6YWdsYWJfMC4xLjhfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS44CmVjWHU0OVBVd2xPb1RQZ1ZIVTNkMDFlUXV6NklwbjJpaVNQcngyWmo2SC9FU1ZQRVFEUTRHaGJ5UUdQTFVTeWpsdnJaNFhsMUN0QWJJdjV2T1JSN0RnPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.8_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGhQZWFaTHBXOWZXZGpUWE50Tm1QNG5LNDhtSnlvRTJnbnNFaDdqYzdPdHliV0FXQjAzb3N3QXQ2SEVMSVVkMVZ5U2JiSzdMVmdUYmVqUFA5UnR2a2c4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzA2MjQzCWZpbGU6YWdsYWJfMC4xLjlfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS45CkFoRDdNbkpWamYrSzU1VVg4UWpObVVRMWhCUWNJeHl2ZHdndDNMek5IMXNPbkYxcW9lYUpYOTAwMDVOVXlGMHY0ZTB5VUN5clVqRmgrVTJtTVBqNUJnPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.9_x64-setup.exe"
     }
   }
 }
