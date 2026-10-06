@@ -1,11 +1,11 @@
 {
-  "version": "0.1.7",
-  "notes": "新增：消息头行的请求链路胶囊动画——输入/载荷/出站/首字节各阶段随真实请求游动点亮，结束后静置为徽章。",
-  "pub_date": "2026-10-06T15:30:38Z",
+  "version": "0.1.8",
+  "notes": "调整：请求链路胶囊动画挪到顶栏模型名旁（原挂在消息头行）。",
+  "pub_date": "2026-10-06T15:50:32Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOG5yWjNLN3RYK2VYSlAxRTB0NktKVTJhTVNERE83Qm5uTm5HNFAzeHJLQm9ONzcrSGsyeE15RFA5VVZsOG5tcVNhbStBSXdWY0xFVlRKU3hHUksxbWdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzAwNTk5CWZpbGU6YWdsYWJfMC4xLjdfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS43Clh1QTFZMENaMk5WdHZBVnBNanVpUEFjczVZVnBUWWU5Y1h3YWtLYzBmQkhvS2E2WjMwN1ppUUJHKzdFbngvcHppRTlCZzloaWJKTlBBWG81VUN4SUNnPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.7_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGtnT2hMczFFZDc3enR1ZlBRazFnUytHekltNVlFejR2azZSOGxLcVBpQnd0SmhvbTZBSk9jVEUzQ2t2RGFHekJNaTNFVXgrRkMvMFowRnRrZkNlWGdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzAxNzk3CWZpbGU6YWdsYWJfMC4xLjhfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS44CmVjWHU0OVBVd2xPb1RQZ1ZIVTNkMDFlUXV6NklwbjJpaVNQcngyWmo2SC9FU1ZQRVFEUTRHaGJ5UUdQTFVTeWpsdnJaNFhsMUN0QWJJdjV2T1JSN0RnPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.8_x64-setup.exe"
     }
   }
 }
