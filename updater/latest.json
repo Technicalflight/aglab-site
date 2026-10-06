@@ -1,11 +1,11 @@
 {
-  "version": "0.1.3",
-  "notes": "修复：新建工作目录等操作时闪出终端（cmd/powershell）——所有后台子进程不再弹控制台窗口。",
-  "pub_date": "2026-10-06T12:11:25Z",
+  "version": "0.1.4",
+  "notes": "新增：屏幕顶部控制胶囊悬浮岛（电脑控制期间全程可见警示，置顶且不挡操作）、项目可移除（侧栏悬停删除 + 两步确认，只解绑不删文件）。",
+  "pub_date": "2026-10-06T13:10:53Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGlCamVzZUFOeHNaQVZlNFZQY3dOWGV0TnEvZlplb2VkWDVlTzY5STNDTS94eGc1aTZSOG9wVzJXRnRmNmlIM2tQTGNxN3FWdzFHUVRiVURtL1NnUXdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjg4NjQ1CWZpbGU6YWdsYWJfMC4xLjNfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS4zCmdiZTc3UVlVSjVPUWlwMXJ5TFkzQ1ZucXMvUlIydnpHclQxUm1SRUZHSEpYeldkOW5TMVVpUWd5UXRPeWdqUCt1V25Ed05Cczl3ZFJUM3Y4ZUd4MkFRPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.3_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHRiS3B6cU5NaklvNE1BYTN0K3YyQ0RnaWhNT0hUKzBhc3Z6NGN1SXZ1aTBWemExRDBxSmZJcnlPUjhuS3Foeldrbk44VEd1cnpmeVZzeXc3cUlTNFFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjkyMjE4CWZpbGU6YWdsYWJfMC4xLjRfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS40CkVGWVp3dEZYS21ROWx5akJIZXV3ZDF3a2F1NngwVUhMMVFmbU9kOWFFMFM5ZkRqYld3UVp6Wld0RjcyUEJUeTl2b0xuYUw5UDVMdlR6ZURNRXhRWkFBPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.4_x64-setup.exe"
     }
   }
 }
