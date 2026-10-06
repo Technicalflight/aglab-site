@@ -1,10 +1,10 @@
 {
   "version": "0.1.9",
   "notes": "新增：中转站探针页（注入检测 + 目标验证 + 综合评分 + 历史分页/详情/删除 + 指定模型探测 + 多中转对照）；修复：失败回合后重试按钮静默失效与用户消息重复叠出。",
-  "pub_date": "2026-10-06T17:13:01Z",
+  "pub_date": "2026-10-06T17:41:17Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGhQZWFaTHBXOWZXZGpUWE50Tm1QNG5LNDhtSnlvRTJnbnNFaDdqYzdPdHliV0FXQjAzb3N3QXQ2SEVMSVVkMVZ5U2JiSzdMVmdUYmVqUFA5UnR2a2c4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzA2MjQzCWZpbGU6YWdsYWJfMC4xLjlfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS45CkFoRDdNbkpWamYrSzU1VVg4UWpObVVRMWhCUWNJeHl2ZHdndDNMek5IMXNPbkYxcW9lYUpYOTAwMDVOVXlGMHY0ZTB5VUN5clVqRmgrVTJtTVBqNUJnPT0K",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHZxM3BxYWtuamRJanZrQnV2bXRyWHF1aWJNcmZMTWlXVlNkeFdJb05DK29JWUJ1ZnUxaEtCNWM2WUlkM3MzZE52dmx3azEwdmFFeFk3YXdPK0VDZHdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzA4MzMyCWZpbGU6YWdsYWJfMC4xLjlfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS45CmhvSzV2ZnBHc2k1NmRCQnFZVXJGTTBOYlN3K29nTTMxaUFIQThSVitrWXhQRThEckgvQmhURlRESmorZEszTmVLbDdHQlEvNTFwNmp1OU5FZERKZEFBPT0K",
       "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.9_x64-setup.exe"
     }
   }
