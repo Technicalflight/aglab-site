@@ -1,10 +1,10 @@
 {
   "version": "0.2.3",
-  "notes": "新增：知识库 docx/xlsx/pptx/PDF/图片导入（内置 Umi-OCR 引擎一键安装）、检索 Rerank 精排、对话导出（Markdown/JSON/JSONL）。修复：切换模型后上下文用量卡容量不同步；记忆页候选区按钮贴边。",
-  "pub_date": "2026-10-06T22:54:10Z",
+  "notes": "新增：知识库 docx/xlsx/pptx/PDF/图片导入（内置 Umi-OCR 引擎一键安装）、检索 Rerank 精排、对话导出（Markdown/JSON/JSONL）。修复：切换模型后上下文用量卡容量不同步（真修：按实发模型对号+档案保存即刷新）；记忆页候选区按钮贴边。",
+  "pub_date": "2026-10-06T23:14:33Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHJGVWtHUHVuZUI4ZjZlUmhhUUxZUllKZytGdExhNmw1TWg0RGxIbTRRVWwxMW9XZitTZkFmWWJBUGlsMzdVMnpEWWtuaWFuV29JWUhjSnc1bmY3UEF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzI3MjM3CWZpbGU6YWdsYWJfMC4yLjNfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi4zCkxJRHBIWFlWOEdKRllPamxUMXNIQ2V2eG9CUlVOZFg3QkxUdE1tKzJkTGR5NE5RK01LSjRZRm5PYWllUHBYLzdQL0JkTUVkVjdTbkI0ZXY3bGdNaUNRPT0K",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGwzVTk2ZXVHZzYxTld4OGdsQit3MExxN2pJc3dXK0ZSNDJpUXVxZ0dtY25qc0ZZWlJ2MjFjZWJ3VURhdXBhWnAwcWRwRHR0c2dib2NxY2R5c1JTbGdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzI4NDM5CWZpbGU6YWdsYWJfMC4yLjNfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi4zCmM3eStEQU0rN3hTNzNEbmxEd2dMVXFEUC9jN3BEbnZPWURpVDFwRkgxbWlqVUxaNFlzaFkrMis0S21IUzBQTDZkZUFDcTlla0VvMlhoYkIycWMrY0RnPT0K",
       "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.3_x64-setup.exe"
     }
   }
