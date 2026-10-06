@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>更新日志 — aglab</title>
+<meta name="description" content="aglab 的每个版本改了什么：新功能、修复与构建说明，与 GitHub Release 一一对应。" />
+<link rel="icon" type="image/png" href="assets/icon.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="announce">🎉 aglab 现已开源（AGPL-3.0），<a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">来 GitHub 看看源码 →</a></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="index.html">aglab<span class="bracket">〈AI 编程助手〉</span></a>
+    <div class="nav-links">
+      <a href="sessions.html">能力会话</a>
+      <a href="features.html">功能</a>
+      <a href="opensource.html">开源</a>
+      <a class="active" href="changelog.html">更新日志</a>
+      <a href="sponsor.html">赞助</a>
+    </div>
+    <a class="nav-cta" href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
+  </div>
+</nav>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>更新日志</h2>
+      <p>每个版本改了什么，都在这里说清楚——与 GitHub Release 一一对应</p>
+    </div>
+
+    <div class="cl-layout">
+      <div class="cl-main">
+
+        <article class="cl-entry" id="v0-1-1">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.1.1" target="_blank" rel="noopener">v0.1.1 🚀</a>
+            <span class="cl-badge">最新</span>
+            <time class="cl-date" datetime="2026-10-06">2026-10-06</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">新增</span>
+              <ul>
+                <li><strong>重复循环护栏</strong>：模型偶发解码退化，在短句上无限复读（「最终。可以。」一路烧到 token 上限）。现在流式输出在进界面前先过周期检测，模式一成型（最坏约 384 字符）即自动断流——循环前的内容保留，后面的 token 不再消耗。设置 → 运行行为 可开关（默认开）</li>
+                <li><strong>上下文压缩改为居中灰色分割线</strong>：压缩中显示脉冲的「正在压缩上下文…」；完成后是一行可点开的「上下文已压缩」，摘要收在折叠区，不再占一条完整气泡。重开话题后压缩行也正确归位</li>
+              </ul>
+            </div>
+            <div class="cl-group">
+              <span class="cl-tag fix">修复</span>
+              <ul>
+                <li>设置页数字输入框在<strong>中文输入法下无法键盘输入</strong>的问题（WebView2 的数字输入框拒收输入法组串，已换为数字语义的文本框 + 输入过滤）</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="cl-entry" id="v0-1-0">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.1.0" target="_blank" rel="noopener">v0.1.0 🚀</a>
+            <time class="cl-date" datetime="2026-10-06">2026-10-06</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">首发</span>
+              <ul>
+                <li><strong>aglab 开源首发</strong>（AGPL-3.0）：Windows 桌面端 AI 编程助手，Tauri 2 + React 19 + Rust</li>
+                <li><strong>四类能力会话</strong>：对话、生图、视频、音乐各有独立界面与存档，产物随话题走</li>
+                <li><strong>工具收容</strong>：逐调用沙箱（低完整性 + Job Object）、文件/命令/网络三层规则、审批卡、审计中心（敏感打码、回收站、自动备份）</li>
+                <li><strong>扩展</strong>：MCP（stdio / HTTP + OAuth）、技能 Skills、SSH 主机、LSP、浏览器控制、PTC code-mode</li>
+                <li><strong>自动化</strong>：目标模式（判据清单自主推进 + 强制修复轮）、定时任务（每周计划 + cron）、记忆与知识库、上下文自动压缩</li>
+                <li><strong>多模态</strong>：图片 / 视频 / 音频本体随行发给支持的模型；对话分支与跨话题全文搜索</li>
+                <li><strong>发布包收口</strong>：生产包不带调试面板，asset 协议收窄 + CSP，CI 最小权限</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <aside class="cl-nav" aria-label="版本快速导航">
+        <h4>快速导航</h4>
+        <a href="#v0-1-1">v0.1.1 版本发布 🚀<span class="cl-nav-date">2026-10-06</span></a>
+        <a href="#v0-1-0">v0.1.0 版本发布 🚀<span class="cl-nav-date">2026-10-06</span></a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Technicalflight · aglab</span>
+    <div class="links">
+      <a href="https://github.com/Technicalflight/aglab" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Technicalflight/aglab/releases" target="_blank" rel="noopener">下载</a>
+      <a href="changelog.html">更新日志</a>
+      <a href="sponsor.html">赞助</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
