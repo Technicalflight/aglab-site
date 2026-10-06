@@ -36,10 +36,36 @@
     <div class="cl-layout">
       <div class="cl-main">
 
+        <article class="cl-entry" id="v0-2-3">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.3" target="_blank" rel="noopener">v0.2.3 🚀</a>
+            <span class="cl-badge">最新</span>
+            <time class="cl-date" datetime="2026-10-07">2026-10-07</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">新增</span>
+              <ul>
+                <li><strong>知识库导入扩容</strong>：docx/xlsx/pptx 就地解析（段落/表格/幻灯片保序），PDF 与图片自动走 OCR 提取文字；二进制类上限放宽到 32MB，来源标注提取方式</li>
+                <li><strong>内置 Umi-OCR 引擎</strong>（MIT 协议）：设置 → 数据 → 资料库检索 一键下载官方 Paddle 整合包（约 134MB，gh-proxy 镜像、无需代理）并后台启动；也支持自行安装只填服务地址</li>
+                <li><strong>检索 Rerank 精排</strong>（可选）：配重排模型后，融合候选扩 4 倍送端点 /rerank 精排再取回最优几条；没配或失败自动回落融合序</li>
+                <li><strong>对话导出</strong>：顶栏导出 Markdown（人读）/ JSON（整段结构）/ JSONL（Unsloth 微调格式），只导当前分支的用户+助手正文</li>
+              </ul>
+            </div>
+            <div class="cl-group">
+              <span class="cl-tag fix">修复</span>
+              <ul>
+                <li><strong>切换模型后上下文用量卡容量不同步</strong>：容量解析现在读当前选中模型的勾选表行，切模型即时跟手；旧模型那轮的台账读数不再压住新容量（切到 1M 窗口的模型卡片不再挂 128K）</li>
+                <li>记忆页「待确认候选」按钮贴边：候选行与批量操作行的左右留白补到与设置页其他卡片一致</li>
+                <li>Umi-OCR 协议标注改正（主程序 MIT，内置 PaddleOCR 引擎 Apache-2.0）</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
         <article class="cl-entry" id="v0-2-2">
           <div class="cl-head">
             <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.2" target="_blank" rel="noopener">v0.2.2 🚀</a>
-            <span class="cl-badge">最新</span>
             <time class="cl-date" datetime="2026-10-07">2026-10-07</time>
           </div>
           <div class="cl-groups">
@@ -291,6 +317,7 @@
 
       <aside class="cl-nav" aria-label="版本快速导航">
         <h4>快速导航</h4>
+        <a href="#v0-2-3">v0.2.3 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-2">v0.2.2 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-1">v0.2.1 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-0">v0.2.0 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
