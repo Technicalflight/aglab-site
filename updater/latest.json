@@ -1,11 +1,11 @@
 {
-  "version": "0.1.5",
-  "notes": "修复：失败回合后重试按钮静默失效（pending 卡死）；失败后重试成功，屏上不再残留重复的用户消息——旧失败记录归入分支历史可切回查看。",
-  "pub_date": "2026-10-06T14:13:56Z",
+  "version": "0.1.6",
+  "notes": "修复：失败回合后点重试，日志与界面重复叠出同样的用户消息——现在重试会找到日志里已落的那句问题原位重问，旧叠层一并收拢。",
+  "pub_date": "2026-10-06T14:50:33Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHVHZ050VmJhdy9lSHV2Z1g1WTFaZGgzUlBYem1yNDBXV0x1YnR6ZkNYbnVFZ2FLbExNOGw5K3k2YmwxVDJyWTA5bUw0WkJzSGUvUmtsVEdUTVc2MndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjk2MDAyCWZpbGU6YWdsYWJfMC4xLjVfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS41CkZKZ1NmQ3R2SjgrbllYRFpRWTlPUEY0MjFMWFV4LzhQRThseUhic21nMkdVVWlLT1JFa0ZodGZ5WGlnSG9waENISUpCc2FvU1V4SjBqcUVkTkhqS0JnPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.5_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHFQQXBHR3R2WG1tMHh6ejk0b0UvcnprZlY3ckNrL25EOXlkOWtJazZxTm5HS2dRQWpNTkpyZkJjQVdDYkl6OVVrZWVEYTJYblh6bk1EcWxpS2tGaEFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjk4MTkzCWZpbGU6YWdsYWJfMC4xLjZfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS42CkplK1RUY21UVWwzRVE1S01VZGRZWXAzS2RXMHZvUktLdkl1Q1lTVlc4QVJrNUdkU09oZnQ5aXd0NUZlRHpzb0x3cHFzZlNDS2VlWXJWbEZIN0lScERBPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.6_x64-setup.exe"
     }
   }
 }
