@@ -1,11 +1,11 @@
 {
-  "version": "0.1.6",
-  "notes": "修复：失败回合后点重试，日志与界面重复叠出同样的用户消息——现在重试会找到日志里已落的那句问题原位重问，旧叠层一并收拢。",
-  "pub_date": "2026-10-06T14:50:33Z",
+  "version": "0.1.7",
+  "notes": "新增：消息头行的请求链路胶囊动画——输入/载荷/出站/首字节各阶段随真实请求游动点亮，结束后静置为徽章。",
+  "pub_date": "2026-10-06T15:30:38Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHFQQXBHR3R2WG1tMHh6ejk0b0UvcnprZlY3ckNrL25EOXlkOWtJazZxTm5HS2dRQWpNTkpyZkJjQVdDYkl6OVVrZWVEYTJYblh6bk1EcWxpS2tGaEFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMjk4MTkzCWZpbGU6YWdsYWJfMC4xLjZfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS42CkplK1RUY21UVWwzRVE1S01VZGRZWXAzS2RXMHZvUktLdkl1Q1lTVlc4QVJrNUdkU09oZnQ5aXd0NUZlRHpzb0x3cHFzZlNDS2VlWXJWbEZIN0lScERBPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.6_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOG5yWjNLN3RYK2VYSlAxRTB0NktKVTJhTVNERE83Qm5uTm5HNFAzeHJLQm9ONzcrSGsyeE15RFA5VVZsOG5tcVNhbStBSXdWY0xFVlRKU3hHUksxbWdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzAwNTk5CWZpbGU6YWdsYWJfMC4xLjdfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMS43Clh1QTFZMENaMk5WdHZBVnBNanVpUEFjczVZVnBUWWU5Y1h3YWtLYzBmQkhvS2E2WjMwN1ppUUJHKzdFbngvcHppRTlCZzloaWJKTlBBWG81VUN4SUNnPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.1.7_x64-setup.exe"
     }
   }
 }
