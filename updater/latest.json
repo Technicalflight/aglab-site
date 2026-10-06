@@ -1,11 +1,11 @@
 {
-  "version": "0.2.0",
-  "notes": "新增：消息头行的请求链路胶囊动画。修复：选中工作区后会话未自动归组（在飞回合带上新归属）；去掉冗余的停止正文提示。",
-  "pub_date": "2026-10-06T18:14:58Z",
+  "version": "0.2.1",
+  "notes": "新增：资料库语义检索（自定义 embedding + 专用密钥 + 端点模型自动拉取）、Repo Wiki 一键导入。修复：资料库检索设置页满幅铺开。",
+  "pub_date": "2026-10-06T20:51:48Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHJQMVdmTmlUeU1NR25mdnNrMitrNHpKQU52TzhEQklPVktZVEsrWlhyYnN3U0c2dllNK2padFdJYTZzVk9BSEU5TlFmVUFnejJyWlpoTzNZMmM0VmdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzEwNDU5CWZpbGU6YWdsYWJfMC4yLjBfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi4wCjZ5V0U4ejFpKy9KdWFYNk53RGdkcDgxY3dKZWdzRS92VkxrTmRDK0k1Q0JMUmx3UGFxVkUrTks5N2QzbHlTdnRoWUI0S2xyWGlzdnVUZ0Q0NkdOOUJnPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.0_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGlxYjRMQ2d0R0hMRDUzSHVHQ0NtclJqaFVxT2R2UlFwRm5HNzNWUDcvUWl6RWo3Y09mUnBodEgvSFVHVzJ4elBoVGdnc0pvUkE2YWhtV0VOVWs4OUE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzE5ODk3CWZpbGU6YWdsYWJfMC4yLjFfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi4xCkE3bS9tMkhLVlZ4OHlvOHBobGpZUWRCdDAxOHViTTRJczRBREpNa2NlcHo5WmFvSmlJOTN4eGtCM0dFMUJCdVlzMTA0WWJVMEFqSFhBbDJYRG1DV0NnPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.1_x64-setup.exe"
     }
   }
 }

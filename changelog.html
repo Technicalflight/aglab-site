@@ -36,10 +36,35 @@
     <div class="cl-layout">
       <div class="cl-main">
 
+        <article class="cl-entry" id="v0-2-1">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.1" target="_blank" rel="noopener">v0.2.1 🚀</a>
+            <span class="cl-badge">最新</span>
+            <time class="cl-date" datetime="2026-10-07">2026-10-07</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">新增</span>
+              <ul>
+                <li><strong>资料库语义检索（自定义 embedding）</strong>：设置 → 数据 → 资料库检索，配一个 OpenAI 兼容 /embeddings 端点后，入库文档自动切块建向量索引（800 字/块，本地 SQLite 向量库随资料库一起迁移）；检索时关键词与向量两路 RRF 融合排序，未配置或请求失败自动退回纯关键词，原有行为不变</li>
+                <li><strong>端点模型自动识别</strong>：一键拉取端点 /models 目录，在下拉里挑 embedding 模型；手填任意模型名也行</li>
+                <li><strong>专用 API 密钥</strong>：embedding 独立凭据条目，与主密钥/各服务商档案槽完全隔离——换档案、换主密钥都不牵连语义检索；不设则沿用当前档案主密钥</li>
+                <li><strong>Repo Wiki 导入</strong>：资料库页新标签，填 owner/repo 或完整 GitHub URL，浅克隆 &lt;repo&gt;.wiki.git，每页 Markdown 入库（Home 页排最前）并自动排入语义索引；私有仓库走本机 git 已有凭据</li>
+                <li>向量维度 0 = 首次嵌入自动探测；换模型一键「重建索引」，索引状态随时可查</li>
+              </ul>
+            </div>
+            <div class="cl-group">
+              <span class="cl-tag fix">修复</span>
+              <ul>
+                <li>资料库检索设置页满幅铺开、控件贴边——内容列回到与各设置页一致的宽度与边距</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
         <article class="cl-entry" id="v0-2-0">
           <div class="cl-head">
             <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.0" target="_blank" rel="noopener">v0.2.0 🚀</a>
-            <span class="cl-badge">最新</span>
             <time class="cl-date" datetime="2026-10-07">2026-10-07</time>
           </div>
           <div class="cl-groups">
@@ -241,6 +266,7 @@
 
       <aside class="cl-nav" aria-label="版本快速导航">
         <h4>快速导航</h4>
+        <a href="#v0-2-1">v0.2.1 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-0">v0.2.0 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-1-9">v0.1.9 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-1-8">v0.1.8 版本发布 🚀<span class="cl-nav-date">2026-10-06</span></a>
