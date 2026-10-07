@@ -36,10 +36,35 @@
     <div class="cl-layout">
       <div class="cl-main">
 
+        <article class="cl-entry" id="v0-2-4">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.4" target="_blank" rel="noopener">v0.2.4 🚀</a>
+            <span class="cl-badge">最新</span>
+            <time class="cl-date" datetime="2026-10-07">2026-10-07</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">新增</span>
+              <ul>
+                <li><strong>压缩阈值先扣输出预留（21–32K 带）</strong>：max_tokens 未填或偏小都按 21K 保底——此前 0 预留会让压缩闸门顶到整窗才开，一发回答就能撞穿窗口</li>
+                <li><strong>文件快照事件化</strong>：每次写入的动手前副本落账即广播，右栏变更面板即时点亮，不用等整轮结束</li>
+                <li><strong>一键回滚全部文件</strong>：变更面板新增「回滚全部」——逐文件尽力而为，漂移的跳过并说明原因；范围另支持单文件与按工具调用两档，校验仍用动手前的 hash_after 指纹</li>
+              </ul>
+            </div>
+            <div class="cl-group">
+              <span class="cl-tag fix">加固</span>
+              <ul>
+                <li>目标模式续跑的 Next 决定升级为非法迁移即崩的显式状态机——判据坏了当场暴露，不再静默停成"看似正常结束"的僵局</li>
+                <li>bash 只读判定拆独立策略模块：git status/log/diff、rg/ls 这类只读命令在规划模式放行；解释器与 find 不进白名单，重定向与命令替换一票否决</li>
+                <li>架构静态治理：超时装配收编进 net.rs，静态闸钉住依赖方向、chat.rs 体量棘轮与超时装配唯一出处</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
         <article class="cl-entry" id="v0-2-3">
           <div class="cl-head">
             <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.3" target="_blank" rel="noopener">v0.2.3 🚀</a>
-            <span class="cl-badge">最新</span>
             <time class="cl-date" datetime="2026-10-07">2026-10-07</time>
           </div>
           <div class="cl-groups">
@@ -317,6 +342,7 @@
 
       <aside class="cl-nav" aria-label="版本快速导航">
         <h4>快速导航</h4>
+        <a href="#v0-2-4">v0.2.4 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-3">v0.2.3 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-2">v0.2.2 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-1">v0.2.1 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
