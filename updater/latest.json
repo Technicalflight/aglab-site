@@ -1,11 +1,11 @@
 {
-  "version": "0.2.7",
-  "notes": "稳定性修复批：流式内联切片修复——多工具轮次之间补空行缝，工具卡按后端印章精确对位插回原文流，回答里的「GitHub」不再被切成「Gi|tHub」两半；web_fetch 乱码修复——GBK/GB2312 页面按响应声明与内容探测解码，抓取中文老网站不再满屏乱码。",
-  "pub_date": "2026-10-07T17:30:57Z",
+  "version": "0.2.8",
+  "notes": "模型一致性对账：链路条新增「模型」格——用户要的、本地映射后实发、上游自报三方对号，上游擅自换人当场亮黄圈，悬停看完整三元组；每发落 model_traces 台账可查；日期后缀变体视为一致，新增 upstreamModelWhitelist 白名单。另修链接识别：www/https 自动链接切在首个非 ASCII 字符，不再把括号和后半句中文吞进高亮。",
+  "pub_date": "2026-10-07T18:37:59Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHNOakFnK3BmVVVTQTZWQm1IWVluQSttRkJ0bU5hQWd0a0M2bUlseUxhYW5YNERqVHVUeHJ3b2lQMDd1MWlIVE5GMHBEaHloSlJjM3lTNFg4QUFmY2dJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzk0MjMwCWZpbGU6YWdsYWJfMC4yLjdfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi43Ck5ULzliUnVQSWtjZjJkUEl1TndTanhWVXNuZUhabjN2VEs1Qy85a3diclA5bG5NR2g5Y1UxZjEvWVJKUGNtcEdIYUVmc3BSMDh3bG40aUVWdTlvSkNnPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.7_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHExWDU1cm0wS0tqRkJUZlF5YXNNajNDM3o4UGFRQm81a3ZrVHdlUEYzVVIwOE5XbHdRK0xiZ1ZpeXdVUzg0ajJlREt5RkhDZkhFeEljQ2lrSjB3andVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzk4MjY4CWZpbGU6YWdsYWJfMC4yLjhfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi44Cng4UnVUM1NCUWN5RDczODAwL0o0VHpGWGs1NGRjeExkaW1WTXlwSWxycUVTWG83SWwyRGdEd1lzNWRadmp2T0t3NHlWdFVrNUh6WkVHWG1lMTdRR0N3PT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.8_x64-setup.exe"
     }
   }
 }

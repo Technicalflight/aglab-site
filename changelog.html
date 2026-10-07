@@ -36,10 +36,31 @@
     <div class="cl-layout">
       <div class="cl-main">
 
+        <article class="cl-entry" id="v0-2-8">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.8" target="_blank" rel="noopener">v0.2.8 🚀</a>
+            <span class="cl-badge">最新</span>
+            <time class="cl-date" datetime="2026-10-08">2026-10-08</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">新增</span>
+              <ul>
+                <li><strong>模型一致性对账</strong>：请求链路条新增「模型」格——用户要的模型、本地映射后实发的模型、上游自报回家的模型三方对号；上游擅自换人当场亮黄圈，悬停看「请求 → 实发 → 上游」完整三元组。每一发落 <code>model_traces</code> 台账（<code>model_trace_list</code> / <code>model_trace_count_by_kind</code> 可查），日期后缀变体（如 <code>gpt-4o-2024-08-06</code>）视为一致，新增 <code>upstreamModelWhitelist</code> 白名单配置——中转站统一回名不再误报</li>
+              </ul>
+            </div>
+            <div class="cl-group">
+              <span class="cl-tag fix">加固</span>
+              <ul>
+                <li><strong>链接识别修复</strong>：<code>www</code>/<code>https</code> 自动链接切在首个非 ASCII 字符——「4399（www.4399.com）是国内最大的…」这类句子里的链接不再把括号和后半句中文吞进高亮</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
         <article class="cl-entry" id="v0-2-7">
           <div class="cl-head">
             <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.7" target="_blank" rel="noopener">v0.2.7 🚀</a>
-            <span class="cl-badge">最新</span>
             <time class="cl-date" datetime="2026-10-08">2026-10-08</time>
           </div>
           <div class="cl-groups">
@@ -406,6 +427,7 @@
 
       <aside class="cl-nav" aria-label="版本快速导航">
         <h4>快速导航</h4>
+        <a href="#v0-2-8">v0.2.8 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
         <a href="#v0-2-7">v0.2.7 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
         <a href="#v0-2-6">v0.2.6 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
         <a href="#v0-2-5">v0.2.5 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
