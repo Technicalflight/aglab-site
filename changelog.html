@@ -36,10 +36,34 @@
     <div class="cl-layout">
       <div class="cl-main">
 
+        <article class="cl-entry" id="v0-2-5">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.5" target="_blank" rel="noopener">v0.2.5 🚀</a>
+            <span class="cl-badge">最新</span>
+            <time class="cl-date" datetime="2026-10-08">2026-10-08</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">新增</span>
+              <ul>
+                <li><strong>MCP 三传输齐备</strong>：新增 legacy SSE 传输（事件流收回应 + endpoint 事件给 POST 目标）；连接池健康检查——死连接在借用前自动丢掉重拉</li>
+                <li><strong>Skills 四生态目录兼容</strong>：claude / codex / cursor 的 skills 目录照单只读收录，来源可单独启停</li>
+                <li><strong>工作区钩子</strong>：hooks.json 放工作目录根或 hooks/ 即成候选；信任按工作目录锚定（同名项目互不顶替），每次事件发射前重新解析——文件一改指纹失配、撤回即时生效；插件页新增「工作区钩子」分区</li>
+                <li><strong>插件官方市场</strong>：官网清单一键安装（下载 zip → 先验 sha256 指纹 → 再解压 → 校验 plugin.json），CDN 被污染时整包拒绝</li>
+              </ul>
+            </div>
+            <div class="cl-group">
+              <span class="cl-tag fix">加固</span>
+              <ul>
+                <li>Skills 供应链防护：技能扫描拒绝符号链接（防越界读），zip 安装拒符号链接条目</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
         <article class="cl-entry" id="v0-2-4">
           <div class="cl-head">
             <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.4" target="_blank" rel="noopener">v0.2.4 🚀</a>
-            <span class="cl-badge">最新</span>
             <time class="cl-date" datetime="2026-10-07">2026-10-07</time>
           </div>
           <div class="cl-groups">
@@ -342,6 +366,7 @@
 
       <aside class="cl-nav" aria-label="版本快速导航">
         <h4>快速导航</h4>
+        <a href="#v0-2-5">v0.2.5 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
         <a href="#v0-2-4">v0.2.4 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-3">v0.2.3 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-2">v0.2.2 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>

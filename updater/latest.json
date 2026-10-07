@@ -1,11 +1,11 @@
 {
-  "version": "0.2.4",
-  "notes": "加固版：压缩阈值先扣输出预留（21–32K）；文件快照事件化（变更面板即时点亮）+ 一键回滚全部文件；目标模式 Next 显式状态机（非法迁移即崩）；bash 只读判定独立策略模块（规划模式放行只读命令）；架构静态治理（依赖方向/体量棘轮/超时唯一出处）。",
-  "pub_date": "2026-10-07T08:44:47Z",
+  "version": "0.2.5",
+  "notes": "扩展架构四线：MCP 三传输（新增 legacy SSE）+ 连接池健康驱逐；Skills 四生态目录兼容（claude/codex/cursor）+ 拒绝符号链接；工作区钩子信任链（按目录锚定、发射前重解析、撤销即时）；插件官方市场（CDN zip + sha256 校验）。",
+  "pub_date": "2026-10-07T10:17:57Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGpYU2dGN29kL0oyMnFUbTUvbk13ckdVY1Q2Sng2TTVtRERmSnRxbnBybjBPamxJUE91VHM5SzdFTjdWNWQ0em1Rc1Z3QWlsdVFaUUJSempQMHlXckFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzYyNjI4CWZpbGU6YWdsYWJfMC4yLjRfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi40CnUxZjBJMG4zWk9kOG1RbElYdk9mbm01a0ZvaEV3cWdRek13R3NtUnRwaDRYc3RTTkNsRHhTcnRCUnF1QXBGMDVLcnFxNDRoTWMvdG1rVndPS3gwd0JRPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.4_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGxPR1pKQzJxUWI2dUR0ZVVoRlNEV0srMHV5cnJWNnpNV0c5NEM4M1hwdlN2WVlKbWlJME1hbjdtNUZXTDZ2Kzltby9lTkZaVTFkRVdtM1ZQbk81RndZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzY4MDU2CWZpbGU6YWdsYWJfMC4yLjVfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi41Ci9odjZjajByNTE5TTNkM0pVV1IrUmMxUUh6Zm9NV0gvazM3S3dtWWlYbnlwZmZBajYwVEJMdFV5RGV6bWFsTi9SeVdGWmxmb3lieVNXcXlPN3ZZeENRPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.5_x64-setup.exe"
     }
   }
 }
