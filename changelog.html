@@ -36,10 +36,34 @@
     <div class="cl-layout">
       <div class="cl-main">
 
+        <article class="cl-entry" id="v0-2-6">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.6" target="_blank" rel="noopener">v0.2.6 🚀</a>
+            <span class="cl-badge">最新</span>
+            <time class="cl-date" datetime="2026-10-08">2026-10-08</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">新增</span>
+              <ul>
+                <li><strong>工具契约层</strong>：全部 38 颗内置工具一份结构化契约（只读/破坏性/可并行/副作用范围/单发输出上限），新工具的风险档从契约推导，扩展与未登记名字按保守默认</li>
+                <li><strong>拓扑并行调度</strong>：同一发的多个工具调用按契约分组——相邻的安全读并排执行（上限 10 并发），写文件/提问/命令各占串行栅栏；并行批逐成员过与串行同款的权限闸，全绿才并跑，要问人或被拦整批退回串行——调度是增益不是闸门</li>
+                <li><strong>单发输出上限全路生效</strong>：契约上限与全局钳制取小者，串行主干与并行后账同一把尺</li>
+                <li><strong>新工具 10 颗（28→38）</strong>：跑 JavaScript（node_repl）、定时任务族（列出/创建/删除/立刻触发）、规划模式切换（进入后只读）、等子助理收尾、记忆检索/记忆动态/历史话题全文搜索</li>
+              </ul>
+            </div>
+            <div class="cl-group">
+              <span class="cl-tag fix">加固</span>
+              <ul>
+                <li>入参打码收进单一出处：策略指纹、待审批队列、审批界面的串行与并行两条路共用同一个打码函数（契约测试钉住）</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
         <article class="cl-entry" id="v0-2-5">
           <div class="cl-head">
             <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.5" target="_blank" rel="noopener">v0.2.5 🚀</a>
-            <span class="cl-badge">最新</span>
             <time class="cl-date" datetime="2026-10-08">2026-10-08</time>
           </div>
           <div class="cl-groups">
@@ -366,6 +390,7 @@
 
       <aside class="cl-nav" aria-label="版本快速导航">
         <h4>快速导航</h4>
+        <a href="#v0-2-6">v0.2.6 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
         <a href="#v0-2-5">v0.2.5 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
         <a href="#v0-2-4">v0.2.4 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>
         <a href="#v0-2-3">v0.2.3 版本发布 🚀<span class="cl-nav-date">2026-10-07</span></a>

@@ -1,11 +1,11 @@
 {
-  "version": "0.2.5",
-  "notes": "扩展架构四线：MCP 三传输（新增 legacy SSE）+ 连接池健康驱逐；Skills 四生态目录兼容（claude/codex/cursor）+ 拒绝符号链接；工作区钩子信任链（按目录锚定、发射前重解析、撤销即时）；插件官方市场（CDN zip + sha256 校验）。",
-  "pub_date": "2026-10-07T10:17:57Z",
+  "version": "0.2.6",
+  "notes": "工具架构批：契约层（38 颗全登记，风险档从契约推导）+ 拓扑并行调度（相邻安全读并排、写与提问栅栏、上限 10 并发、全绿才并跑）+ maxOutputBytes 全路生效 + 新工具 10 颗（node_repl/定时任务族/规划模式/等子助理/记忆与历史检索）。",
+  "pub_date": "2026-10-07T11:55:30Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGxPR1pKQzJxUWI2dUR0ZVVoRlNEV0srMHV5cnJWNnpNV0c5NEM4M1hwdlN2WVlKbWlJME1hbjdtNUZXTDZ2Kzltby9lTkZaVTFkRVdtM1ZQbk81RndZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzY4MDU2CWZpbGU6YWdsYWJfMC4yLjVfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi41Ci9odjZjajByNTE5TTNkM0pVV1IrUmMxUUh6Zm9NV0gvazM3S3dtWWlYbnlwZmZBajYwVEJMdFV5RGV6bWFsTi9SeVdGWmxmb3lieVNXcXlPN3ZZeENRPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.5_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHY3SndKUWRXbDhPRGpYQmwvTGJlbFJ1dEhIWUY4UmtpOGRJM3MyNkg5L09UcmluN21UWEJocjVsS2RhMEZmS2VTSzA3WlJ0TFNRSStiSENnWGErbEFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzc0MDYwCWZpbGU6YWdsYWJfMC4yLjZfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi42Cjl5UUhTUEJUeGJNaFd5bGgwYTBuMFloUTh5TlkzUFB3YnRpT2Rzd24zSGQ3L2hSQU9HRXlBdjBEQWN0b0VDNUM0Tk5mOGtBSFFuVWlBOFdHRDdCMUFRPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.6_x64-setup.exe"
     }
   }
 }
