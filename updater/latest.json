@@ -1,11 +1,11 @@
 {
-  "version": "0.2.6",
-  "notes": "工具架构批：契约层（38 颗全登记，风险档从契约推导）+ 拓扑并行调度（相邻安全读并排、写与提问栅栏、上限 10 并发、全绿才并跑）+ maxOutputBytes 全路生效 + 新工具 10 颗（node_repl/定时任务族/规划模式/等子助理/记忆与历史检索）。",
-  "pub_date": "2026-10-07T11:55:30Z",
+  "version": "0.2.7",
+  "notes": "稳定性修复批：流式内联切片修复——多工具轮次之间补空行缝，工具卡按后端印章精确对位插回原文流，回答里的「GitHub」不再被切成「Gi|tHub」两半；web_fetch 乱码修复——GBK/GB2312 页面按响应声明与内容探测解码，抓取中文老网站不再满屏乱码。",
+  "pub_date": "2026-10-07T17:30:57Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHY3SndKUWRXbDhPRGpYQmwvTGJlbFJ1dEhIWUY4UmtpOGRJM3MyNkg5L09UcmluN21UWEJocjVsS2RhMEZmS2VTSzA3WlJ0TFNRSStiSENnWGErbEFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzc0MDYwCWZpbGU6YWdsYWJfMC4yLjZfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi42Cjl5UUhTUEJUeGJNaFd5bGgwYTBuMFloUTh5TlkzUFB3YnRpT2Rzd24zSGQ3L2hSQU9HRXlBdjBEQWN0b0VDNUM0Tk5mOGtBSFFuVWlBOFdHRDdCMUFRPT0K",
-      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.6_x64-setup.exe"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHNOakFnK3BmVVVTQTZWQm1IWVluQSttRkJ0bU5hQWd0a0M2bUlseUxhYW5YNERqVHVUeHJ3b2lQMDd1MWlIVE5GMHBEaHloSlJjM3lTNFg4QUFmY2dJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzk0MjMwCWZpbGU6YWdsYWJfMC4yLjdfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi43Ck5ULzliUnVQSWtjZjJkUEl1TndTanhWVXNuZUhabjN2VEs1Qy85a3diclA5bG5NR2g5Y1UxZjEvWVJKUGNtcEdIYUVmc3BSMDh3bG40aUVWdTlvSkNnPT0K",
+      "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.7_x64-setup.exe"
     }
   }
 }
