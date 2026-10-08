@@ -1,11 +1,12 @@
 {
   "version": "0.2.9",
   "notes": "Agent 子进程收官：回合可跑在独立子进程（设置页开关，默认关）——主进程与回合执行分离，崩溃域隔离第一步；流式回复、工具卡、台账与内联完全同源，插话/停止/审批弹窗跨进程可达。缓存保温改版：未声明存活期的服务商按 5 分钟档默认保温，声明档原样生效，经济学门槛照旧把着钱。另含监督者并发化（长回合中审批/插话/停止并发可达）与重活类诚实拒绝。",
-  "pub_date": "2026-10-08T16:46:34Z",
+  "pub_date": "2026-10-08T17:33:51Z",
   "platforms": {
     "windows-x86_64": {
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOHZhV3o1RkNPMnAwOFRUTEY1ZGJ0blhETWxlNC9KWnV5cEN3TVY2TDJzMXRvaTFQVTNlbmhxdDVjYlhGNS9nazljZC82UWpkNmNKUHNwMW5qLzlTK3djPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNDc3OTQzCWZpbGU6YWdsYWJfMC4yLjlfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi45CkpuNWhydGt0d1QxQ0pIODk2dlNMdC84ZTdpZmxWa0dNUVBNUFg2b2RRMThVWC9qRkhGeStLSDhpNWwzL1NudzNkREh5dE51blMySVQ3YVJSRGtQNUNRPT0K",
       "url": "https://technicalflight.github.io/aglab-site/dl/aglab_0.2.9_x64-setup.exe"
     }
-  }
+  },
+  "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRUjF2eXdvcmdNOGk2NXducFV5TU04d0trcEZOakNWUVJSNzFCTzgzbUFGemtMY3NlNENKb2ozUjhsZ1NGdTFEdEJ5Y1VkODc5aUFNRDNUOGE0ZWlBS0hKcWJRdGdDMXdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNDgwODE1CWZpbGU6YWdsYWJfMC4yLjlfeDY0LXNldHVwLmV4ZQl2ZXJzaW9uOjAuMi45Ci80YUdBQ0dTYTVHRkxXQUk1dXpVeURIUWYyUlQ4SmUrNXArNXR5WFFjRGoza1FreGdmbUpxVTNyUThHS0NFQkJ0dnNuWExUUUdlVVdTNEcwYVhkNUJRPT0K"
 }
