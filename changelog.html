@@ -53,6 +53,8 @@
             <div class="cl-group">
               <span class="cl-tag fix">加固</span>
               <ul>
+                <li><strong>标题栏快速点击粘滞拖动修复</strong>：自定义标题栏快速点击后拖动偶发粘滞——vendor tao 打补丁，按下改走 SendMessageW 同步启动模态循环，配 GetAsyncKeyState 门卫挡掉合成的按键释放</li>
+                <li><strong>子进程回合重试修复</strong>：子进程回合点「重试/重新生成」被 bad_params 误拦——带 rewind_to 的空正文重试是合法流，参数闸放行（内联路同一语义）</li>
                 <li><strong>监督者并发化</strong>：长回合进行中审批决议、插话、停止可并发送达子进程（pending 表按请求配对），审批闭环不再有死锁面；旧代子进程的字节按 fencing 拒收</li>
                 <li><strong>重活类诚实拒绝</strong>：子助理、浏览器、agent_control 在子进程里明确报"要在主窗口进程执行"，不假装能跑</li>
               </ul>
