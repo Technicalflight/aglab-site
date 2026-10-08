@@ -36,10 +36,33 @@
     <div class="cl-layout">
       <div class="cl-main">
 
+        <article class="cl-entry" id="v0-2-9">
+          <div class="cl-head">
+            <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.9" target="_blank" rel="noopener">v0.2.9 🚀</a>
+            <span class="cl-badge">最新</span>
+            <time class="cl-date" datetime="2026-10-09">2026-10-09</time>
+          </div>
+          <div class="cl-groups">
+            <div class="cl-group">
+              <span class="cl-tag add">新增</span>
+              <ul>
+                <li><strong>回合可跑在 Agent 子进程</strong>：设置页新增开关（默认关）——开启后界面发的每一句话经协议进独立子进程跑真回合，主进程与回合执行分离，崩溃域隔离的第一步。流式回复、工具卡、会话日志与用量台账与内联完全同源；插话、停止、审批弹窗跨进程可达</li>
+                <li><strong>缓存保温默认全覆盖</strong>：服务商未声明缓存存活期时不再跳过保温——按行业最短档（5 分钟）默认续，声明档原样生效；经济学门槛照旧把着钱，总开关可关</li>
+              </ul>
+            </div>
+            <div class="cl-group">
+              <span class="cl-tag fix">加固</span>
+              <ul>
+                <li><strong>监督者并发化</strong>：长回合进行中审批决议、插话、停止可并发送达子进程（pending 表按请求配对），审批闭环不再有死锁面；旧代子进程的字节按 fencing 拒收</li>
+                <li><strong>重活类诚实拒绝</strong>：子助理、浏览器、agent_control 在子进程里明确报"要在主窗口进程执行"，不假装能跑</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
         <article class="cl-entry" id="v0-2-8">
           <div class="cl-head">
             <a class="cl-ver" href="https://github.com/Technicalflight/aglab/releases/tag/v0.2.8" target="_blank" rel="noopener">v0.2.8 🚀</a>
-            <span class="cl-badge">最新</span>
             <time class="cl-date" datetime="2026-10-08">2026-10-08</time>
           </div>
           <div class="cl-groups">
@@ -427,6 +450,7 @@
 
       <aside class="cl-nav" aria-label="版本快速导航">
         <h4>快速导航</h4>
+        <a href="#v0-2-9">v0.2.9 版本发布 🚀<span class="cl-nav-date">2026-10-09</span></a>
         <a href="#v0-2-8">v0.2.8 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
         <a href="#v0-2-7">v0.2.7 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
         <a href="#v0-2-6">v0.2.6 版本发布 🚀<span class="cl-nav-date">2026-10-08</span></a>
